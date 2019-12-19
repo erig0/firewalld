@@ -1,3 +1,4 @@
+sudo: required
 dist: bionic
 
 language: python
@@ -5,23 +6,48 @@ python:
   - "2.7"
   - "3.7"
 
+# Use keywords to split the tests into smaller groups and therefore decrease
+# the time CI takes to run.
+env:
+# offline tests
+  - MAKE_ARGS="check" TESTSUITEFLAGS="-k offline -j3"
+# iptables backend
+  - MAKE_ARGS="check" TESTSUITEFLAGS="-k iptables -j3"
+  - MAKE_ARGS="check" TESTSUITEFLAGS="-k iptables -j3"
+    IP6TABLES="/bin/false" IP6TABLES_RESTORE="/bin/false"
+#
+# Unfortunately, the bionic kernel (4.15) lacks proper support for nftables
+# RULE_ID and therefore inserting rules by index is broken. So we can't run the
+# nftables tests.
+#
+#  - MAKE_ARGS="check" TESTSUITEFLAGS="-k nftables -j3"
+#  - MAKE_ARGS="check-integration"
+
 addons:
   apt:
     packages:
     - autoconf
+    - autoconf
     - automake
-    - pkg-config
-    - intltool
-    - libglib2.0-dev
-    - xsltproc
-    - docbook-xsl
+    - automake
     - docbook-xml
-    - iptables
-    - ipset
+    - docbook-xml
+    - docbook-xsl
+    - docbook-xsl
     - ebtables
-    - libxml2-utils
+    - intltool
+    - intltool
+    - ipset
+    - iptables
     - libdbus-1-dev
     - libgirepository1.0-dev
+    - libglib2.0-dev
+    - libglib2.0-dev
+    - libxml2-utils
+    - libxml2-utils
+    - network-manager
+    - pkg-config
+    - xsltproc
 
 install:
   - pip install flake8 decorator dbus-python PyGObject
@@ -31,10 +57,30 @@ install:
     && make
     && pip install .
     && popd
+  - sudo apt-get -qq -y install libmnl-dev libgmp-dev libreadline-dev
+    && pushd /tmp
+    && wget https://netfilter.org/projects/libnftnl/files/libnftnl-1.1.5.tar.bz2
+    && wget https://netfilter.org/projects/nftables/files/nftables-0.9.3.tar.bz2
+    && tar xf libnftnl-1.1.5.tar.bz2
+    && tar xf nftables-0.9.3.tar.bz2
+    && cd libnftnl-1.1.5
+    && ./configure --prefix=/usr
+    && make
+    && sudo make install
+    && sudo ldconfig
+    && cd /tmp
+    && cd nftables-0.9.3
+    && ./configure --prefix=/usr --disable-man-doc
+    && make
+    && sudo make install
+    && cd py
+    && pip install .
+    && popd
+    && sudo ldconfig
 
 script:
   - ./autogen.sh
-    && ./configure --sysconfdir=/etc
+    && ./configure
     && make -j32
-  - make -C src check-local
-  - make -C config check-local
+  - sudo env PATH="$PATH" make ${MAKE_ARGS} ||
+    sudo env PATH="$PATH" make ${MAKE_ARGS} TESTSUITEFLAGS="--recheck --errexit -v -d"
