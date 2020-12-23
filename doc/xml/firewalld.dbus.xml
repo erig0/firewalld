@@ -56,7 +56,7 @@
 /org/fedoraproject/FirewallD1
   Interfaces
     <link linkend="FirewallD1">org.fedoraproject.FirewallD1</link>
-    <link linkend="FirewallD1.direct">org.fedoraproject.FirewallD1.direct</link>
+    <link linkend="FirewallD1.direct">org.fedoraproject.FirewallD1.direct</link> (deprecated)
     <link linkend="FirewallD1.ipset">org.fedoraproject.FirewallD1.ipset</link>
     <link linkend="FirewallD1.policies">org.fedoraproject.FirewallD1.policies</link>
     <link linkend="FirewallD1.zone">org.fedoraproject.FirewallD1.zone</link>
@@ -66,7 +66,7 @@
 /org/fedoraproject/FirewallD1/config
   Interfaces
     <link linkend="FirewallD1.config">org.fedoraproject.FirewallD1.config</link>
-    <link linkend="FirewallD1.config.direct">org.fedoraproject.FirewallD1.config.direct</link>
+    <link linkend="FirewallD1.config.direct">org.fedoraproject.FirewallD1.config.direct</link> (deprecated)
     <link linkend="FirewallD1.config.policies">org.fedoraproject.FirewallD1.config.policies</link>
     org.freedesktop.DBus.Introspectable
     org.freedesktop.DBus.Properties
@@ -324,7 +324,7 @@
             <term><methodname>runtimeToPermanent</methodname>() &rarr; Nothing</term>
             <listitem>
               <para>
-		Make runtime settings permanent. Replaces permanent settings with runtime settings for zones, services, icmptypes, direct and policies (lockdown whitelist).
+		Make runtime settings permanent. Replaces permanent settings with runtime settings for zones, services, icmptypes, direct (deprecated) and policies (lockdown whitelist).
               </para>
 	      <para>
 		Possible errors: RT_TO_PERM_FAILED
@@ -629,6 +629,17 @@
 
     <refsect2 id="FirewallD1.direct">
       <title>org.fedoraproject.FirewallD1.direct</title>
+
+      <sect3>
+        <title>deprecated</title>
+
+        <para>
+          The direct interface has been deprecated. It will be removed in a future
+          release. It is superseded by policies, see
+          <citerefentry><refentrytitle>firewalld.policies</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+        </para>
+      </sect3>
+
       <para>
 	This interface enables more direct access to the firewall.
 	It enables runtime manipulation with chains and rules.
@@ -904,6 +915,17 @@
       </refsect3>
 
       <refsect3 id="FirewallD1.direct.Signals">
+
+        <sect4>
+          <title>deprecated</title>
+
+          <para>
+            The direct interface has been deprecated. It will be removed in a future
+            release. It is superseded by policies, see
+            <citerefentry><refentrytitle>firewalld.policies</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+          </para>
+        </sect4>
+
         <title>Signals</title>
         <variablelist>
           <varlistentry id="FirewallD1.direct.Signals.ChainAdded">
@@ -1468,7 +1490,7 @@
             <listitem>
               <para>
 		Add rich language <replaceable>rule</replaceable> into <replaceable>zone</replaceable>.
-		For the rich language rule syntax, please have a look at <citerefentry><refentrytitle>firewalld.direct</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+		For the rich language rule syntax, please have a look at <citerefentry><refentrytitle>firewalld.richlanguage</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
 		If <replaceable>zone</replaceable> is empty, use default zone.
 		If <replaceable>timeout</replaceable> is non-zero, the operation will be active only for the amount of seconds.
 		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addRichRule">org.fedoraproject.FirewallD1.config.zone.Methods.addRichRule</link>.
@@ -2882,6 +2904,17 @@
 
     <refsect2 id="FirewallD1.config.direct">
       <title>org.fedoraproject.FirewallD1.config.direct</title>
+
+      <sect3>
+        <title>deprecated</title>
+
+        <para>
+          The direct interface has been deprecated. It will be removed in a future
+          release. It is superseded by policies, see
+          <citerefentry><refentrytitle>firewalld.policies</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+        </para>
+      </sect3>
+
       <para>
 	Interface for permanent direct configuration, see also <citerefentry><refentrytitle>firewalld.direct</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
 	For runtime direct configuration see <link linkend="FirewallD1.direct">org.fedoraproject.FirewallD1.direct</link> interface.
@@ -3165,6 +3198,17 @@
       </refsect3>
 
       <refsect3 id="FirewallD1.config.direct.Signals">
+
+        <sect4>
+          <title>deprecated</title>
+
+          <para>
+            The direct interface has been deprecated. It will be removed in a future
+            release. It is superseded by policies, see
+            <citerefentry><refentrytitle>firewalld.policies</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+          </para>
+        </sect4>
+
         <title>Signals</title>
         <variablelist>
           <varlistentry id="FirewallD1.config.direct.Signals.Updated">
