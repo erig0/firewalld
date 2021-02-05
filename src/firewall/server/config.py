@@ -784,7 +784,8 @@ class FirewallDConfig(slip.dbus.service.Object):
         data = dbus_introspection_add_properties(
                     self, data, config.dbus.DBUS_INTERFACE_CONFIG)
 
-        for interface in [config.dbus.DBUS_INTERFACE_CONFIG_DIRECT]:
+        for interface in [config.dbus.DBUS_INTERFACE_CONFIG_DIRECT,
+                          config.dbus.DBUS_INTERFACE_CONFIG]:
             data = dbus_introspection_add_deprecated(
                         self, data, interface,
                         dbus_service_method_deprecated().deprecated,
@@ -1248,6 +1249,7 @@ class FirewallDConfig(slip.dbus.service.Object):
                 (source, len(ret))
         return ret[0] if ret else ""
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG,
                          in_signature="s(sssbsasa(ss)asba(ssss)asasasasa(ss)b)",
                          out_signature='o')

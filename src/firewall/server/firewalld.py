@@ -305,6 +305,13 @@ class FirewallD(slip.dbus.service.Object):
 
         data = dbus_introspection_add_properties(self, data,
                                                  config.dbus.DBUS_INTERFACE)
+        for interface in [config.dbus.DBUS_INTERFACE, config.dbus.DBUS_INTERFACE_ZONE]:
+            data = dbus_introspection_add_deprecated(self, data,
+                                                     interface,
+                                                     dbus_service_method_deprecated().deprecated,
+                                                     dbus_service_signal_deprecated().deprecated)
+
+        return data
 
         for interface in [config.dbus.DBUS_INTERFACE_DIRECT]:
             data = dbus_introspection_add_deprecated(self, data,
@@ -918,6 +925,7 @@ class FirewallD(slip.dbus.service.Object):
     # list functions
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE, in_signature='s',
                          out_signature="(sssbsasa(ss)asba(ssss)asasasasa(ss)b)")
     @dbus_handle_exceptions
@@ -1228,6 +1236,7 @@ class FirewallD(slip.dbus.service.Object):
         return ""
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -1240,6 +1249,7 @@ class FirewallD(slip.dbus.service.Object):
     # INTERFACES
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1257,6 +1267,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1271,6 +1282,7 @@ class FirewallD(slip.dbus.service.Object):
         return self.changeZoneOfInterface(zone, interface, sender)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1288,6 +1300,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1305,6 +1318,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -1318,6 +1332,7 @@ class FirewallD(slip.dbus.service.Object):
         return self.fw.zone.query_interface(zone, interface)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='as')
     @dbus_handle_exceptions
@@ -1331,11 +1346,13 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.getInterfaces('%s')" % (zone))
         return self.fw.zone.list_interfaces(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ss')
     @dbus_handle_exceptions
     def InterfaceAdded(self, zone, interface):
         log.debug1("zone.InterfaceAdded('%s', '%s')" % (zone, interface))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ss')
     @dbus_handle_exceptions
     def ZoneChanged(self, zone, interface):
@@ -1351,6 +1368,7 @@ class FirewallD(slip.dbus.service.Object):
                                                                 interface))
         self.ZoneChanged(zone, interface)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ss')
     @dbus_handle_exceptions
     def InterfaceRemoved(self, zone, interface):
@@ -1361,6 +1379,7 @@ class FirewallD(slip.dbus.service.Object):
     # SOURCES
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1378,6 +1397,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1395,6 +1415,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1412,6 +1433,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -1425,6 +1447,7 @@ class FirewallD(slip.dbus.service.Object):
         return self.fw.zone.query_source(zone, source)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='as')
     @dbus_handle_exceptions
@@ -1438,6 +1461,7 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.getSources('%s')" % (zone))
         return self.fw.zone.list_sources(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ss')
     @dbus_handle_exceptions
     def SourceAdded(self, zone, source):
@@ -1448,6 +1472,7 @@ class FirewallD(slip.dbus.service.Object):
     def ZoneOfSourceChanged(self, zone, source):
         log.debug1("zone.ZoneOfSourceChanged('%s', '%s')" % (zone, source))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ss')
     @dbus_handle_exceptions
     def SourceRemoved(self, zone, source):
@@ -1466,6 +1491,7 @@ class FirewallD(slip.dbus.service.Object):
         self.RichRuleRemoved(zone, rule)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ssi',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1486,6 +1512,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1500,6 +1527,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -1511,6 +1539,7 @@ class FirewallD(slip.dbus.service.Object):
         return self.fw.zone.query_rule(zone, obj)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='as')
     @dbus_handle_exceptions
@@ -1522,11 +1551,13 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.getRichRules('%s')" % (zone))
         return self.fw.zone.list_rules(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ssi')
     @dbus_handle_exceptions
     def RichRuleAdded(self, zone, rule, timeout):
         log.debug1("zone.RichRuleAdded('%s', '%s', %d)" % (zone, rule, timeout))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ss')
     @dbus_handle_exceptions
     def RichRuleRemoved(self, zone, rule):
@@ -1544,6 +1575,7 @@ class FirewallD(slip.dbus.service.Object):
         self.ServiceRemoved(zone, service)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ssi',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1566,6 +1598,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1583,6 +1616,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -1594,6 +1628,7 @@ class FirewallD(slip.dbus.service.Object):
         return self.fw.zone.query_service(zone, service)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='as')
     @dbus_handle_exceptions
@@ -1605,12 +1640,14 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.getServices('%s')" % (zone))
         return self.fw.zone.list_services(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ssi')
     @dbus_handle_exceptions
     def ServiceAdded(self, zone, service, timeout):
         log.debug1("zone.ServiceAdded('%s', '%s', %d)" % \
                        (zone, service, timeout))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ss')
     @dbus_handle_exceptions
     def ServiceRemoved(self, zone, service):
@@ -1629,6 +1666,7 @@ class FirewallD(slip.dbus.service.Object):
         self.PortRemoved(zone, port, protocol)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='sssi',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1652,6 +1690,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='sss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1670,6 +1709,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='sss',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -1682,6 +1722,7 @@ class FirewallD(slip.dbus.service.Object):
         return self.fw.zone.query_port(zone, port, protocol)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='aas')
     @dbus_handle_exceptions
@@ -1693,12 +1734,14 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.getPorts('%s')" % (zone))
         return self.fw.zone.list_ports(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='sssi')
     @dbus_handle_exceptions
     def PortAdded(self, zone, port, protocol, timeout=0):
         log.debug1("zone.PortAdded('%s', '%s', '%s', %d)" % \
                        (zone, port, protocol, timeout))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='sss')
     @dbus_handle_exceptions
     def PortRemoved(self, zone, port, protocol):
@@ -1717,6 +1760,7 @@ class FirewallD(slip.dbus.service.Object):
         self.ProtocolRemoved(zone, protocol)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ssi',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1738,6 +1782,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1754,6 +1799,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -1765,6 +1811,7 @@ class FirewallD(slip.dbus.service.Object):
         return self.fw.zone.query_protocol(zone, protocol)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='as')
     @dbus_handle_exceptions
@@ -1776,12 +1823,14 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.getProtocols('%s')" % (zone))
         return self.fw.zone.list_protocols(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ssi')
     @dbus_handle_exceptions
     def ProtocolAdded(self, zone, protocol, timeout=0):
         log.debug1("zone.ProtocolAdded('%s', '%s', %d)" % \
                        (zone, protocol, timeout))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ss')
     @dbus_handle_exceptions
     def ProtocolRemoved(self, zone, protocol):
@@ -1800,6 +1849,7 @@ class FirewallD(slip.dbus.service.Object):
         self.SourcePortRemoved(zone, port, protocol)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='sssi',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1824,6 +1874,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='sss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1842,6 +1893,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='sss',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -1855,6 +1907,7 @@ class FirewallD(slip.dbus.service.Object):
         return self.fw.zone.query_source_port(zone, port, protocol)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='aas')
     @dbus_handle_exceptions
@@ -1866,12 +1919,14 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.getSourcePorts('%s')" % (zone))
         return self.fw.zone.list_source_ports(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='sssi')
     @dbus_handle_exceptions
     def SourcePortAdded(self, zone, port, protocol, timeout=0):
         log.debug1("zone.SourcePortAdded('%s', '%s', '%s', %d)" % \
                    (zone, port, protocol, timeout))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='sss')
     @dbus_handle_exceptions
     def SourcePortRemoved(self, zone, port, protocol):
@@ -1889,6 +1944,7 @@ class FirewallD(slip.dbus.service.Object):
         self.MasqueradeRemoved(zone)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='si',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1909,6 +1965,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1924,6 +1981,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -1933,11 +1991,13 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.queryMasquerade('%s')" % (zone))
         return self.fw.zone.query_masquerade(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='si')
     @dbus_handle_exceptions
     def MasqueradeAdded(self, zone, timeout=0):
         log.debug1("zone.MasqueradeAdded('%s', %d)" % (zone, timeout))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='s')
     @dbus_handle_exceptions
     def MasqueradeRemoved(self, zone):
@@ -1954,6 +2014,7 @@ class FirewallD(slip.dbus.service.Object):
         self.ForwardPortRemoved(zone, port, protocol, toport, toaddr)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='sssssi',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -1983,6 +2044,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='sssss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -2005,6 +2067,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='sssss',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -2022,6 +2085,7 @@ class FirewallD(slip.dbus.service.Object):
                                                toaddr)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='aas')
     @dbus_handle_exceptions
@@ -2033,6 +2097,7 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.getForwardPorts('%s')" % (zone))
         return self.fw.zone.list_forward_ports(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='sssssi')
     @dbus_handle_exceptions
     def ForwardPortAdded(self, zone, port, protocol, toport, toaddr,
@@ -2040,6 +2105,7 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.ForwardPortAdded('%s', '%s', '%s', '%s', '%s', %d)" % \
                        (zone, port, protocol, toport, toaddr, timeout))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='sssss')
     @dbus_handle_exceptions
     def ForwardPortRemoved(self, zone, port, protocol, toport, toaddr): # pylint: disable=R0913
@@ -2058,6 +2124,7 @@ class FirewallD(slip.dbus.service.Object):
         self.IcmpBlockRemoved(zone, icmp)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ssi',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -2079,6 +2146,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -2095,6 +2163,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='ss',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -2106,6 +2175,7 @@ class FirewallD(slip.dbus.service.Object):
         return self.fw.zone.query_icmp_block(zone, icmp)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='as')
     @dbus_handle_exceptions
@@ -2117,12 +2187,14 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.getIcmpBlocks('%s')" % (zone))
         return self.fw.zone.list_icmp_blocks(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ssi')
     @dbus_handle_exceptions
     def IcmpBlockAdded(self, zone, icmp, timeout=0):
         log.debug1("zone.IcmpBlockAdded('%s', '%s', %d)" % \
                        (zone, icmp, timeout))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='ss')
     @dbus_handle_exceptions
     def IcmpBlockRemoved(self, zone, icmp):
@@ -2133,6 +2205,7 @@ class FirewallD(slip.dbus.service.Object):
     # ICMP BLOCK INVERSION
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -2147,6 +2220,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='s')
     @dbus_handle_exceptions
@@ -2161,6 +2235,7 @@ class FirewallD(slip.dbus.service.Object):
         return _zone
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_ZONE, in_signature='s',
                          out_signature='b')
     @dbus_handle_exceptions
@@ -2170,11 +2245,13 @@ class FirewallD(slip.dbus.service.Object):
         log.debug1("zone.queryIcmpBlockInversion('%s')" % (zone))
         return self.fw.zone.query_icmp_block_inversion(zone)
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='s')
     @dbus_handle_exceptions
     def IcmpBlockInversionAdded(self, zone):
         log.debug1("zone.IcmpBlockInversionAdded('%s')" % (zone))
 
+    @dbus_service_signal_deprecated(config.dbus.DBUS_INTERFACE_ZONE)
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_ZONE, signature='s')
     @dbus_handle_exceptions
     def IcmpBlockInversionRemoved(self, zone):

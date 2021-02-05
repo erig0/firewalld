@@ -9,6 +9,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1"]//method[
     <method name="getZoneSettings">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="(sssbsasa(ss)asba(ssss)asasasasa(ss)b)"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -58,6 +59,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
     <method name="isImmutable">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -67,6 +69,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="interface" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="InterfaceAdded"]]], 0, [dnl
@@ -80,6 +83,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="interface" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="ZoneChanged"]]], 0, [dnl
@@ -93,6 +97,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="interface" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="removeInterface"]]], 0, [dnl
@@ -100,6 +105,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="interface" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="InterfaceRemoved"]]], 0, [dnl
@@ -113,12 +119,14 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="interface" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="getInterfaces"]]], 0, [dnl
     <method name="getInterfaces">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="as"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -128,6 +136,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="source" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="SourceAdded"]]], 0, [dnl
@@ -141,6 +150,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="source" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="removeSource"]]], 0, [dnl
@@ -148,6 +158,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="source" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="SourceRemoved"]]], 0, [dnl
@@ -161,12 +172,14 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="source" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="getSources"]]], 0, [dnl
     <method name="getSources">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="as"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -177,6 +190,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="service" type="s"></arg>
         <arg direction="in" name="timeout" type="i"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="ServiceAdded"]]], 0, [dnl
@@ -191,6 +205,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="service" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="ServiceRemoved"]]], 0, [dnl
@@ -204,12 +219,14 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="service" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="getServices"]]], 0, [dnl
     <method name="getServices">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="as"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -220,6 +237,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="protocol" type="s"></arg>
         <arg direction="in" name="timeout" type="i"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="ProtocolAdded"]]], 0, [dnl
@@ -234,6 +252,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="protocol" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="ProtocolRemoved"]]], 0, [dnl
@@ -247,12 +266,14 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="protocol" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="getProtocols"]]], 0, [dnl
     <method name="getProtocols">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="as"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -264,6 +285,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="protocol" type="s"></arg>
         <arg direction="in" name="timeout" type="i"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="PortAdded"]]], 0, [dnl
@@ -280,6 +302,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="port" type="s"></arg>
         <arg direction="in" name="protocol" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="PortRemoved"]]], 0, [dnl
@@ -295,6 +318,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="port" type="s"></arg>
         <arg direction="in" name="protocol" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="getPorts"]]], 0, [dnl
@@ -303,6 +327,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         dnl NOTE: The signature is "aas", but getPorts() actually returns
         dnl "a(ss)". Apparently python-dbus coerces to "aas".
         <arg direction="out" type="aas"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -314,6 +339,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="protocol" type="s"></arg>
         <arg direction="in" name="timeout" type="i"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="SourcePortAdded"]]], 0, [dnl
@@ -330,6 +356,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="port" type="s"></arg>
         <arg direction="in" name="protocol" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="SourcePortRemoved"]]], 0, [dnl
@@ -345,6 +372,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="port" type="s"></arg>
         <arg direction="in" name="protocol" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="getSourcePorts"]]], 0, [dnl
@@ -353,6 +381,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         dnl NOTE: The signature is "aas", but getPorts() actually returns
         dnl "a(ss)". Apparently python-dbus coerces to "aas".
         <arg direction="out" type="aas"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -366,6 +395,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="toaddr" type="s"></arg>
         <arg direction="in" name="timeout" type="i"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="ForwardPortAdded"]]], 0, [dnl
@@ -386,6 +416,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="toport" type="s"></arg>
         <arg direction="in" name="toaddr" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="ForwardPortRemoved"]]], 0, [dnl
@@ -405,6 +436,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="toport" type="s"></arg>
         <arg direction="in" name="toaddr" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="getForwardPorts"]]], 0, [dnl
@@ -413,6 +445,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         dnl NOTE: The signature is "aas", but getPorts() actually returns
         dnl "a(ssss)". Apparently python-dbus coerces to "aas".
         <arg direction="out" type="aas"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -422,6 +455,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="timeout" type="i"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="MasqueradeAdded"]]], 0, [dnl
@@ -434,6 +468,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
     <method name="removeMasquerade">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="MasqueradeRemoved"]]], 0, [dnl
@@ -445,6 +480,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
     <method name="queryMasquerade">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -455,6 +491,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="icmp" type="s"></arg>
         <arg direction="in" name="timeout" type="i"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="IcmpBlockAdded"]]], 0, [dnl
@@ -469,6 +506,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="icmp" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="IcmpBlockRemoved"]]], 0, [dnl
@@ -482,12 +520,14 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="icmp" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="getIcmpBlocks"]]], 0, [dnl
     <method name="getIcmpBlocks">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="as"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -496,6 +536,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
     <method name="addIcmpBlockInversion">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="IcmpBlockInversionAdded"]]], 0, [dnl
@@ -507,6 +548,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
     <method name="removeIcmpBlockInversion">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="IcmpBlockInversionRemoved"]]], 0, [dnl
@@ -518,6 +560,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
     <method name="queryIcmpBlockInversion">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 
@@ -528,6 +571,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="rule" type="s"></arg>
         <arg direction="in" name="timeout" type="i"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="RichRuleAdded"]]], 0, [dnl
@@ -542,6 +586,7 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="rule" type="s"></arg>
         <arg direction="out" type="s"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//signal[@name="RichRuleRemoved"]]], 0, [dnl
@@ -555,12 +600,14 @@ DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//me
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="in" name="rule" type="s"></arg>
         <arg direction="out" type="b"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 DBUS_INTROSPECT([], [[//interface[@name="org.fedoraproject.FirewallD1.zone"]//method[@name="getRichRules"]]], 0, [dnl
     <method name="getRichRules">
         <arg direction="in" name="zone" type="s"></arg>
         <arg direction="out" type="as"></arg>
+        <annotation name="org.freedesktop.DBus.Deprecated" value="true"></annotation>
     </method>
 ])
 

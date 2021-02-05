@@ -1354,208 +1354,95 @@
             <term><methodname>addForwardPort</methodname>(s: zone, s: port, s: protocol, s: toport, s: toaddr, i: timeout) &rarr; s</term>
             <listitem>
               <para>
-		Add the IPv4 forward port into <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		The port can either be a single port number <replaceable>portid</replaceable> or a port range <replaceable>portid</replaceable>-<replaceable>portid</replaceable>.
-		The protocol can either be <literal>tcp</literal> or <literal>udp</literal>.
-		The destination address is a simple IP address.
-		If <replaceable>timeout</replaceable> is non-zero, the operation will be active only for the amount of seconds.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addForwardPort">org.fedoraproject.FirewallD1.config.zone.Methods.addForwardPort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the forward port was added.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PORT, MISSING_PROTOCOL, INVALID_PROTOCOL, INVALID_ADDR, INVALID_FORWARD, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.addIcmpBlock">
             <term><methodname>addIcmpBlock</methodname>(s: zone, s: icmp, i: timeout) &rarr; s</term>
             <listitem>
               <para>
-		Add an ICMP block <replaceable>icmp</replaceable> into <replaceable>zone</replaceable>.
-		The <replaceable>icmp</replaceable> is the one of the icmp types firewalld supports.
-		To get a listing of supported icmp types use <link linkend="FirewallD1.Methods.listIcmpTypes">org.fedoraproject.FirewallD1.Methods.listIcmpTypes</link>
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		If <replaceable>timeout</replaceable> is non-zero, the operation will be active only for the amount of seconds.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addIcmpBlock">org.fedoraproject.FirewallD1.config.zone.Methods.addIcmpBlock</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the ICMP block was added.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_ICMPTYPE, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.addIcmpBlockInversion">
             <term><methodname>addIcmpBlockInversion</methodname>(s: zone) &rarr; s</term>
             <listitem>
               <para>
-		Add ICMP block inversion to <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addIcmpBlockInversion">org.fedoraproject.FirewallD1.config.zone.Methods.addIcmpBlockInversion</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the ICMP block inversion was added.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.addInterface">
             <term><methodname>addInterface</methodname>(s: zone, s: interface) &rarr; s</term>
             <listitem>
               <para>
-		Bind <replaceable>interface</replaceable> with <replaceable>zone</replaceable>.
-		From now on all traffic going through the <replaceable>interface</replaceable> will respect the <replaceable>zone</replaceable>'s settings.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addInterface">org.fedoraproject.FirewallD1.config.zone.Methods.addInterface</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the interface was bound.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_INTERFACE, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.addMasquerade">
             <term><methodname>addMasquerade</methodname>(s: zone, i: timeout) &rarr; s</term>
             <listitem>
               <para>
-		Enable masquerade in <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		If <replaceable>timeout</replaceable> is non-zero, masquerading will be active for the amount of seconds.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addMasquerade">org.fedoraproject.FirewallD1.config.zone.Methods.addMasquerade</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone in which the masquerade was enabled.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.addPort">
             <term><methodname>addPort</methodname>(s: zone, s: port, s: protocol, i: timeout) &rarr; s</term>
             <listitem>
               <para>
-		Add port into <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		The port can either be a single port number or a port range <replaceable>portid</replaceable>-<replaceable>portid</replaceable>.
-		The protocol can either be <literal>tcp</literal> or <literal>udp</literal>.
-		If <replaceable>timeout</replaceable> is non-zero, the operation will be active only for the amount of seconds.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addPort">org.fedoraproject.FirewallD1.config.zone.Methods.addPort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the port was added.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PORT, MISSING_PROTOCOL, INVALID_PROTOCOL, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.addProtocol">
             <term><methodname>addProtocol</methodname>(s: zone, s: protocol, i: timeout) &rarr; s</term>
             <listitem>
               <para>
-		Add protocol into <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		The protocol can be any protocol supported by the system. Please have a look at <filename>/etc/protocols</filename> for supported protocols.
-		If <replaceable>timeout</replaceable> is non-zero, the operation will be active only for the amount of seconds.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addProtocol">org.fedoraproject.FirewallD1.config.zone.Methods.addProtocol</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the protocol was added.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PROTOCOL, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.addRichRule">
             <term><methodname>addRichRule</methodname>(s: zone, s: rule, i: timeout) &rarr; s</term>
             <listitem>
               <para>
-		Add rich language <replaceable>rule</replaceable> into <replaceable>zone</replaceable>.
-		For the rich language rule syntax, please have a look at <citerefentry><refentrytitle>firewalld.direct</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		If <replaceable>timeout</replaceable> is non-zero, the operation will be active only for the amount of seconds.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addRichRule">org.fedoraproject.FirewallD1.config.zone.Methods.addRichRule</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the rich language rule was added.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_RULE, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.addService">
             <term><methodname>addService</methodname>(s: zone, s: service, i: timeout) &rarr; s</term>
             <listitem>
               <para>
-		Add <replaceable>service</replaceable> into <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		If <replaceable>timeout</replaceable> is non-zero, the operation will be active only for the amount of seconds.
-		To get a list of supported services, use <link linkend="FirewallD1.Methods.listServices">org.fedoraproject.FirewallD1.Methods.listServices</link>.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addService">org.fedoraproject.FirewallD1.config.zone.Methods.addService</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the service was added.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_SERVICE, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.addSource">
             <term><methodname>addSource</methodname>(s: zone, s: source) &rarr; s</term>
             <listitem>
               <para>
-		Bind <replaceable>source</replaceable> with <replaceable>zone</replaceable>.
-		From now on all traffic going from this <replaceable>source</replaceable> will respect the <replaceable>zone</replaceable>'s settings.
-		A source address or address range is either an IP address or a network IP address with a mask for IPv4 or IPv6.
-		For IPv4, the mask can be a network mask or a plain number.
-		For IPv6 the mask is a plain number. Use of host names is not supported.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addSource">org.fedoraproject.FirewallD1.config.zone.Methods.addSource</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the source was bound.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_ADDR, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.addSourcePort">
             <term><methodname>addSourcePort</methodname>(s: zone, s: port, s: protocol, i: timeout) &rarr; s</term>
             <listitem>
               <para>
-		Add source port into <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		The port can either be a single port number or a port range <replaceable>portid</replaceable>-<replaceable>portid</replaceable>.
-		The protocol can either be <literal>tcp</literal> or <literal>udp</literal>.
-		If <replaceable>timeout</replaceable> is non-zero, the operation will be active only for the amount of seconds.
-		For permanent settings see <link linkend="FirewallD1.config.zone.Methods.addSourcePort">org.fedoraproject.FirewallD1.config.zone.Methods.addSourcePort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the port was added.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PORT, MISSING_PROTOCOL, INVALID_PROTOCOL, ALREADY_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.changeZone">
             <term><methodname>changeZone</methodname>(s: zone, s: interface) &rarr; s</term>
             <listitem>
               <para>
-		This function is deprecated, use <link linkend="FirewallD1.zone.Methods.changeZoneOfInterface">org.fedoraproject.FirewallD1.zone.Methods.changeZoneOfInterface</link> instead.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -1563,45 +1450,23 @@
             <term><methodname>changeZoneOfInterface</methodname>(s: zone, s: interface) &rarr; s</term>
             <listitem>
               <para>
-		Change a zone an <replaceable>interface</replaceable> is bound to to <replaceable>zone</replaceable>.
-		It's basically removeInterface(<replaceable>interface</replaceable>) followed by addInterface(<replaceable>zone</replaceable>, <replaceable>interface</replaceable>).
-		If <replaceable>interface</replaceable> has not been bound to a zone before, it behaves like <methodname>addInterface</methodname>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the interface was bound.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, ZONE_ALREADY_SET, ZONE_CONFLICT
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.changeZoneOfSource">
             <term><methodname>changeZoneOfSource</methodname>(s: zone, s: source) &rarr; s</term>
             <listitem>
               <para>
-		Change a zone an <replaceable>source</replaceable> is bound to to <replaceable>zone</replaceable>.
-		It's basically removeSource(<replaceable>source</replaceable>) followed by addSource(<replaceable>zone</replaceable>, <replaceable>source</replaceable>).
-		If <replaceable>source</replaceable> has not been bound to a zone before, it behaves like <methodname>addSource</methodname>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone to which the source was bound.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, ZONE_ALREADY_SET, ZONE_CONFLICT
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getActiveZones">
             <term><methodname>getActiveZones</methodname>() &rarr; a{sa{sas}}</term>
             <listitem>
               <para>
-		Return dictionary of currently active zones altogether with interfaces and sources used in these zones.
-		Active zones are zones, that have a binding to an interface or source.
-              </para>
-              <para>
-		Return value is a dictionary where keys are zone names (s) and values are again dictionaries where keys are either 'interfaces' or 'sources' and values are arrays of interface names (s) or sources (s).
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -1609,133 +1474,80 @@
             <term><methodname>getForwardPorts</methodname>(s: zone) &rarr; aas</term>
             <listitem>
               <para>
-		Return array of IPv4 forward ports previously added into <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For getting permanent settings see <link linkend="FirewallD1.config.zone.Methods.getForwardPorts">org.fedoraproject.FirewallD1.config.zone.Methods.getForwardPorts</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-              <para>
-		Return value is array of 4-tuples, where each 4-tuple consists of (port, protocol, to-port, to-addr). to-addr might be empty in case of local forwarding.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getIcmpBlocks">
             <term><methodname>getIcmpBlocks</methodname>(s: zone) &rarr; as</term>
             <listitem>
               <para>
-		Return array of ICMP type (s) blocks previously added into <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For getting permanent settings see <link linkend="FirewallD1.config.zone.Methods.getIcmpBlocks">org.fedoraproject.FirewallD1.config.zone.Methods.getIcmpBlocks</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getIcmpBlockInversion">
             <term><methodname>getIcmpBlockInversion</methodname>(s: zone) &rarr; b</term>
             <listitem>
               <para>
-		Return whether ICMP block inversion was previously added to <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For getting permanent settings see <link linkend="FirewallD1.config.zone.Methods.getIcmpBlockInversion">org.fedoraproject.FirewallD1.config.zone.Methods.getIcmpBlockInversion</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getInterfaces">
             <term><methodname>getInterfaces</methodname>(s: zone) &rarr; as</term>
             <listitem>
               <para>
-		Return array of interfaces (s) previously bound with <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For getting permanent settings see <link linkend="FirewallD1.config.zone.Methods.getInterfaces">org.fedoraproject.FirewallD1.config.zone.Methods.getInterfaces</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getPorts">
             <term><methodname>getPorts</methodname>(s: zone) &rarr; aas</term>
             <listitem>
               <para>
-		Return array of ports (2-tuple of port and protocol) previously enabled in <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For getting permanent settings see <link linkend="FirewallD1.config.zone.Methods.getPorts">org.fedoraproject.FirewallD1.config.zone.Methods.getPorts</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getProtocols">
             <term><methodname>getProtocols</methodname>(s: zone) &rarr; as</term>
             <listitem>
               <para>
-		Return array of protocols (s) previously enabled in <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For getting permanent settings see <link linkend="FirewallD1.config.zone.Methods.getProtocols">org.fedoraproject.FirewallD1.config.zone.Methods.getProtocols</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getRichRules">
             <term><methodname>getRichRules</methodname>(s: zone) &rarr; as</term>
             <listitem>
               <para>
-		Return array of rich language rules (s) previously added into <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For getting permanent settings see <link linkend="FirewallD1.config.zone.Methods.getRichRules">org.fedoraproject.FirewallD1.config.zone.Methods.getRichRules</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getServices">
             <term><methodname>getServices</methodname>(s: zone) &rarr; as</term>
             <listitem>
               <para>
-		Return array of services (s) previously enabled in <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For getting permanent settings see <link linkend="FirewallD1.config.zone.Methods.getServices">org.fedoraproject.FirewallD1.config.zone.Methods.getServices</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getSourcePorts">
             <term><methodname>getSourcePorts</methodname>(s: zone) &rarr; aas</term>
             <listitem>
               <para>
-		Return array of source ports (2-tuple of port and protocol) previously enabled in <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For getting permanent settings see <link linkend="FirewallD1.config.zone.Methods.getSourcePorts">org.fedoraproject.FirewallD1.config.zone.Methods.getSourcePorts</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getSources">
             <term><methodname>getSources</methodname>(s: zone) &rarr; as</term>
             <listitem>
               <para>
-		Return array of sources (s) previously bound with <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For getting permanent settings see <link linkend="FirewallD1.config.zone.Methods.getSources">org.fedoraproject.FirewallD1.config.zone.Methods.getSources</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.getZoneOfInterface">
@@ -1777,319 +1589,176 @@
             <term><methodname>queryForwardPort</methodname>(s: zone, s: port, s: protocol, s: toport, s: toaddr) &rarr; b</term>
             <listitem>
               <para>
-		Return whether the IPv4 forward port (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>, <replaceable>toport</replaceable>, <replaceable>toaddr</replaceable>) has been added into <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.queryForwardPort">org.fedoraproject.FirewallD1.config.zone.Methods.queryForwardPort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PORT, MISSING_PROTOCOL, INVALID_PROTOCOL, INVALID_ADDR, INVALID_FORWARD
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.queryIcmpBlock">
             <term><methodname>queryIcmpBlock</methodname>(s: zone, s: icmp) &rarr; b</term>
             <listitem>
               <para>
-		Return whether an ICMP block for <replaceable>icmp</replaceable> has been added into <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.queryIcmpBlock">org.fedoraproject.FirewallD1.config.zone.Methods.queryIcmpBlock</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_ICMPTYPE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.queryIcmpBlockInversion">
             <term><methodname>queryIcmpBlockInversion</methodname>(s: zone) &rarr; b</term>
             <listitem>
               <para>
-		Return whether ICMP block inversion has been added to <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.queryIcmpBlockInversion">org.fedoraproject.FirewallD1.config.zone.Methods.queryIcmpBlockInversion</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_ICMPTYPE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.queryInterface">
             <term><methodname>queryInterface</methodname>(s: zone, s: interface) &rarr; b</term>
             <listitem>
               <para>
-		Query whether <replaceable>interface</replaceable> has been bound to <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.queryInterface">org.fedoraproject.FirewallD1.config.zone.Methods.queryInterface</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_INTERFACE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.queryMasquerade">
             <term><methodname>queryMasquerade</methodname>(s: zone) &rarr; b</term>
             <listitem>
               <para>
-		Return whether masquerading has been enabled in <replaceable>zone</replaceable>
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.queryMasquerade">org.fedoraproject.FirewallD1.config.zone.Methods.queryMasquerade</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.queryPort">
             <term><methodname>queryPort</methodname>(s: zone, s: port, s: protocol) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>port</replaceable>/<replaceable>protocol</replaceable> has been added in <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.queryPort">org.fedoraproject.FirewallD1.config.zone.Methods.queryPort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PORT, MISSING_PROTOCOL, INVALID_PROTOCOL
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.queryProtocol">
             <term><methodname>queryProtocol</methodname>(s: zone, s: protocol) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>protocol</replaceable> has been added in <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.queryProtocol">org.fedoraproject.FirewallD1.config.zone.Methods.queryProtocol</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PROTOCOL
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.queryRichRule">
             <term><methodname>queryRichRule</methodname>(s: zone, s: rule) &rarr; b</term>
             <listitem>
               <para>
-		Return whether rich rule <replaceable>rule</replaceable> has been added in <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.queryRichRule">org.fedoraproject.FirewallD1.config.zone.Methods.queryRichRule</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_RULE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.queryService">
             <term><methodname>queryService</methodname>(s: zone, s: service) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>service</replaceable> has been added for <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.queryService">org.fedoraproject.FirewallD1.config.zone.Methods.queryService</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_SERVICE
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.querySource">
             <term><methodname>querySource</methodname>(s: zone, s: source) &rarr; b</term>
             <listitem>
               <para>
-		Query whether <replaceable>source</replaceable>has been bound to <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.querySource">org.fedoraproject.FirewallD1.config.zone.Methods.querySource</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_ADDR
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.querySourcePort">
             <term><methodname>querySourcePort</methodname>(s: zone, s: port, s: protocol) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>port</replaceable>/<replaceable>protocol</replaceable> has been added in <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.querySourcePort">org.fedoraproject.FirewallD1.config.zone.Methods.querySourcePort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.getZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.getZoneSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PORT, MISSING_PROTOCOL, INVALID_PROTOCOL
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removeForwardPort">
             <term><methodname>removeForwardPort</methodname>(s: zone, s: port, s: protocol, s: toport, s: toaddr) &rarr; s</term>
             <listitem>
               <para>
-		Remove IPv4 forward port ((<replaceable>port</replaceable>, <replaceable>protocol</replaceable>, <replaceable>toport</replaceable>, <replaceable>toaddr</replaceable>)) from <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removeForwardPort">org.fedoraproject.FirewallD1.config.zone.Methods.removeForwardPort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone from which the forward port was removed.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PORT, MISSING_PROTOCOL, INVALID_PROTOCOL, INVALID_ADDR, INVALID_FORWARD, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removeIcmpBlock">
             <term><methodname>removeIcmpBlock</methodname>(s: zone, s: icmp) &rarr; s</term>
             <listitem>
               <para>
-		Remove ICMP block <replaceable>icmp</replaceable> from <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removeIcmpBlock">org.fedoraproject.FirewallD1.config.zone.Methods.removeIcmpBlock</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone from which the ICMP block was removed.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_ICMPTYPE, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removeIcmpBlockInversion">
             <term><methodname>removeIcmpBlockInversion</methodname>(s: zone) &rarr; s</term>
             <listitem>
               <para>
-		Remove ICMP block inversion from <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removeIcmpBlockInversion">org.fedoraproject.FirewallD1.config.zone.Methods.removeIcmpBlockInversion</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone from which the ICMP block inversion was removed.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removeInterface">
             <term><methodname>removeInterface</methodname>(s: zone, s: interface) &rarr; s</term>
             <listitem>
               <para>
-		Remove binding of <replaceable>interface</replaceable> from <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, the interface will be removed from zone it belongs to.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removeInterface">org.fedoraproject.FirewallD1.config.zone.Methods.removeInterface</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone from which the <replaceable>interface</replaceable> was removed.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_INTERFACE, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removeMasquerade">
             <term><methodname>removeMasquerade</methodname>(s: zone) &rarr; s</term>
             <listitem>
               <para>
-		Disable masquerade for <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removeMasquerade">org.fedoraproject.FirewallD1.config.zone.Methods.removeMasquerade</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone for which the masquerade was disabled.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removePort">
             <term><methodname>removePort</methodname>(s: zone, s: port, s: protocol) &rarr; s</term>
             <listitem>
               <para>
-		Remove <replaceable>port</replaceable>/<replaceable>protocol</replaceable> from <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removePort">org.fedoraproject.FirewallD1.config.zone.Methods.removePort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone from which the port was removed.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PORT, MISSING_PROTOCOL, INVALID_PROTOCOL, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removeProtocol">
             <term><methodname>removeProtocol</methodname>(s: zone, s: protocol) &rarr; s</term>
             <listitem>
               <para>
-		Remove protocol from <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removeProtocol">org.fedoraproject.FirewallD1.config.zone.Methods.removeProtocol</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone from which the protocol was removed.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PROTOCOL, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removeRichRule">
             <term><methodname>removeRichRule</methodname>(s: zone, s: rule) &rarr; s</term>
             <listitem>
               <para>
-		Remove rich language <replaceable>rule</replaceable> from <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removeRichRule">org.fedoraproject.FirewallD1.config.zone.Methods.removeRichRule</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone from which the rich language rule was removed.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_RULE, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removeService">
             <term><methodname>removeService</methodname>(s: zone, s: service) &rarr; s</term>
             <listitem>
               <para>
-		Remove <replaceable>service</replaceable> from <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removeService">org.fedoraproject.FirewallD1.config.zone.Methods.removeService</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone from which the service was removed.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_SERVICE, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removeSource">
             <term><methodname>removeSource</methodname>(s: zone, s: source) &rarr; s</term>
             <listitem>
               <para>
-		Remove binding of <replaceable>source</replaceable> from <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, the source will be removed from zone it belongs to.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removeSource">org.fedoraproject.FirewallD1.config.zone.Methods.removeSource</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone from which the <replaceable>source</replaceable> was removed.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_ADDR, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.zone.Methods.removeSourcePort">
             <term><methodname>removeSourcePort</methodname>(s: zone, s: port, s: protocol) &rarr; s</term>
             <listitem>
               <para>
-		Remove <replaceable>port</replaceable>/<replaceable>protocol</replaceable> from <replaceable>zone</replaceable>.
-		If <replaceable>zone</replaceable> is empty, use default zone.
-		For permanent operation see <link linkend="FirewallD1.config.zone.Methods.removeSourcePort">org.fedoraproject.FirewallD1.config.zone.Methods.removeSourcePort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link> instead.
               </para>
-              <para>
-		Returns name of zone from which the source port was removed.
-              </para>
-	      <para>
-		Possible errors: INVALID_ZONE, INVALID_PORT, MISSING_PROTOCOL, INVALID_PROTOCOL, NOT_ENABLED, INVALID_COMMAND
-	      </para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -2102,7 +1771,7 @@
             <term>ForwardPortAdded(s: zone, s: port, s: protocol, s: toport, s: toaddr, i: timeout)</term>
             <listitem>
               <para>
-		Emitted when forward port has been added to <replaceable>zone</replaceable> with <replaceable>timeout</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2110,7 +1779,7 @@
             <term>ForwardPortRemoved(s: zone, s: port, s: protocol, s: toport, s: toaddr)</term>
             <listitem>
               <para>
-		Emitted when forward port has been removed from <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2118,7 +1787,7 @@
             <term>IcmpBlockAdded(s: zone, s: icmp, i: timeout)</term>
             <listitem>
               <para>
-		Emitted when ICMP block for <replaceable>icmp</replaceable> has been added to <replaceable>zone</replaceable> with <replaceable>timeout</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2126,7 +1795,7 @@
             <term>IcmpBlockInversionAdded(s: zone)</term>
             <listitem>
               <para>
-		Emitted when ICMP block inversion has been added to <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2134,7 +1803,7 @@
             <term>IcmpBlockInversionRemoved(s: zone)</term>
             <listitem>
               <para>
-		Emitted when ICMP block inversion has been removed from <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2142,7 +1811,7 @@
             <term>IcmpBlockRemoved(s: zone, s: icmp)</term>
             <listitem>
               <para>
-		Emitted when ICMP block for <replaceable>icmp</replaceable> has been removed from <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2150,7 +1819,7 @@
             <term>InterfaceAdded(s: zone, s: interface)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>interface</replaceable> has been added to <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2158,7 +1827,7 @@
             <term>InterfaceRemoved(s: zone, s: interface)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>interface</replaceable> has been removed from <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2166,7 +1835,7 @@
             <term>MasqueradeAdded(s: zone, i: timeout)</term>
             <listitem>
               <para>
-		Emitted when masquerade has been enabled for <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2174,7 +1843,7 @@
             <term>MasqueradeRemoved(s: zone)</term>
             <listitem>
               <para>
-		Emitted when masquerade has been disabled for <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2182,7 +1851,7 @@
             <term>PortAdded(s: zone, s: port, s: protocol, i: timeout)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>port</replaceable>/<replaceable>protocol</replaceable> has been added to <replaceable>zone</replaceable> with <replaceable>timeout</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2190,7 +1859,7 @@
             <term>PortRemoved(s: zone, s: port, s: protocol)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>port</replaceable>/<replaceable>protocol</replaceable> has been removed from <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2198,7 +1867,7 @@
             <term>ProtocolAdded(s: zone, s: protocol, i: timeout)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>protocol</replaceable> has been added to <replaceable>zone</replaceable> with <replaceable>timeout</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2206,7 +1875,7 @@
             <term>ProtocolRemoved(s: zone, s: protocol)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>protocol</replaceable> has been removed from <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2214,7 +1883,7 @@
             <term>RichRuleAdded(s: zone, s: rule, i: timeout)</term>
             <listitem>
               <para>
-		Emitted when rich language <replaceable>rule</replaceable> has been added to <replaceable>zone</replaceable> with <replaceable>timeout</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2222,7 +1891,7 @@
             <term>RichRuleRemoved(s: zone, s: rule)</term>
             <listitem>
               <para>
-		Emitted when rich language <replaceable>rule</replaceable> has been removed from <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2230,7 +1899,7 @@
             <term>ServiceAdded(s: zone, s: service, i: timeout)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>service</replaceable> has been added to <replaceable>zone</replaceable> with <replaceable>timeout</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2238,7 +1907,7 @@
             <term>ServiceRemoved(s: zone, s: service)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>service</replaceable> has been removed from <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2246,7 +1915,7 @@
             <term>SourceAdded(s: zone, s: source)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>source</replaceable> has been added to <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2254,7 +1923,7 @@
             <term>SourcePortAdded(s: zone, s: port, s: protocol, i: timeout)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>source-port</replaceable>/<replaceable>protocol</replaceable> has been added to <replaceable>zone</replaceable> with <replaceable>timeout</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2262,7 +1931,7 @@
             <term>SourcePortRemoved(s: zone, s: port, s: protocol)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>source-port</replaceable>/<replaceable>protocol</replaceable> has been removed from <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2270,7 +1939,7 @@
             <term>SourceRemoved(s: zone, s: source)</term>
             <listitem>
               <para>
-		Emitted when <replaceable>source</replaceable> has been removed from <replaceable>zone</replaceable>.
+                This function is deprecated, use <link linkend="FirewallD1.zone.Signals.ZoneUpdated">org.fedoraproject.FirewallD1.zone.Signals.ZoneUpdated</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -2298,8 +1967,8 @@
               </para>
             </listitem>
           </varlistentry>
-          <varlistentry id="FirewallD1.zone.Signals.ZoneUpdated2">
-            <term>ZoneUpdated2(s: zone, a{sv}: settings)</term>
+          <varlistentry id="FirewallD1.zone.Signals.ZoneUpdated">
+            <term>ZoneUpdated(s: zone, a{sv}: settings)</term>
             <listitem>
               <para>
                 Emitted when a zone's settings are updated via <link linkend="FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</link>
@@ -2476,7 +2145,6 @@
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.Methods.addZone">
-            <annotation name="org.freedesktop.DBus.Deprecated" />
             <term><methodname>addZone</methodname>(s: zone, (sssbsasa(ss)asba(ssss)asasasasa(ss)b): settings) &rarr; o</term>
             <listitem>
               <para>
@@ -4034,7 +3702,6 @@
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.zone.Methods.getSettings">
-            <annotation name="org.freedesktop.DBus.Deprecated" />
             <term><methodname>getSettings</methodname>() &rarr; (sssbsasa(ss)asba(ssss)asasasasa(ss)b)</term>
             <listitem>
               <para>
@@ -4076,8 +3743,7 @@
             <term><methodname>getShort</methodname>() &rarr; s</term>
             <listitem>
               <para>
-		Get name of zone.
-		See <literal>short</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4085,9 +3751,7 @@
             <term><methodname>getSourcePorts</methodname>() &rarr; a(ss)</term>
             <listitem>
               <para>
-		Get list of (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) defined in zone.
-		See <literal>source-port</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.getSourcePorts">org.fedoraproject.FirewallD1.zone.Methods.getSourcePorts</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4095,9 +3759,7 @@
             <term><methodname>getSources</methodname>() &rarr; as</term>
             <listitem>
               <para>
-		Get list of source addresses bound to zone.
-		See <literal>source</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.getSources">org.fedoraproject.FirewallD1.zone.Methods.getSources</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4105,8 +3767,7 @@
             <term><methodname>getTarget</methodname>() &rarr; s</term>
             <listitem>
               <para>
-		Get target of zone.
-		See <literal>target</literal> attribute of <literal>zone</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4114,8 +3775,7 @@
             <term><methodname>getVersion</methodname>() &rarr; s</term>
             <listitem>
               <para>
-		Get version of zone.
-		See <literal>version</literal> attribute of <literal>zone</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4134,9 +3794,7 @@
             <term><methodname>queryForwardPort</methodname>(s: port, s: protocol, s: toport, s: toaddr) &rarr; b</term>
             <listitem>
               <para>
-		Return whether (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>, <replaceable>toport</replaceable>, <replaceable>toaddr</replaceable>) is in list of forward ports of zone.
-		See <literal>forward-port</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.queryForwardPort">org.fedoraproject.FirewallD1.zone.Methods.queryForwardPort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4144,9 +3802,7 @@
             <term><methodname>queryIcmpBlock</methodname>(s: icmptype) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>icmptype</replaceable> is in list of icmp types blocked in zone.
-		See <literal>icmp-block</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.queryIcmpBlock">org.fedoraproject.FirewallD1.zone.Methods.queryIcmpBlock</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4154,9 +3810,7 @@
             <term><methodname>queryIcmpBlockInversion</methodname>() &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>icmp block inversion</replaceable> is in enabled in zone.
-		See <literal>icmp-block-inversion</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.queryIcmpBlockInversion">org.fedoraproject.FirewallD1.zone.Methods.queryIcmpBlockInversion</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4164,9 +3818,7 @@
             <term><methodname>queryInterface</methodname>(s: interface) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>interface</replaceable> is in list of interfaces bound to zone.
-		See <literal>interface</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.queryInterface">org.fedoraproject.FirewallD1.zone.Methods.queryInterface</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4174,10 +3826,7 @@
             <term><methodname>queryMasquerade</methodname>() &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>masquerade</replaceable> is enabled in zone.
-		This is the same as getMasquerade() method.
-		See <literal>masquerade</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.queryMasquerade">org.fedoraproject.FirewallD1.zone.Methods.queryMasquerade</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4185,9 +3834,7 @@
             <term><methodname>queryPort</methodname>(s: port, s: protocol) &rarr; b</term>
             <listitem>
               <para>
-		Return whether (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) is in list of ports of zone.
-		See <literal>port</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.queryPort">org.fedoraproject.FirewallD1.zone.Methods.queryPort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4195,21 +3842,15 @@
             <term><methodname>queryProtocol</methodname>(s: protocol) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>protocol</replaceable> has been added in <replaceable>zone</replaceable>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.queryProtocol">org.fedoraproject.FirewallD1.zone.Methods.queryProtocol</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_PROTOCOL
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.zone.Methods.queryRichRule">
             <term><methodname>queryRichRule</methodname>(s: rule) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>rule</replaceable> is in list of rich-language rules in zone.
-		See <literal>rule</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.queryRichRule">org.fedoraproject.FirewallD1.zone.Methods.queryRichRule</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4217,9 +3858,7 @@
             <term><methodname>queryService</methodname>(s: service) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>service</replaceable> is in list of services used in zone.
-		See <literal>service</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.queryService">org.fedoraproject.FirewallD1.zone.Methods.queryService</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4227,9 +3866,7 @@
             <term><methodname>querySource</methodname>(s: source) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>source</replaceable> is in list of source addresses bound to zone.
-		See <literal>source</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.querySource">org.fedoraproject.FirewallD1.zone.Methods.querySource</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4237,9 +3874,7 @@
             <term><methodname>querySourcePort</methodname>(s: port, s: protocol) &rarr; b</term>
             <listitem>
               <para>
-		Return whether (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) is in list of source ports of zone.
-		See <literal>source-port</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.querySourcePort">org.fedoraproject.FirewallD1.zone.Methods.querySourcePort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4258,142 +3893,88 @@
             <term><methodname>removeForwardPort</methodname>(s: port, s: protocol, s: toport, s: toaddr) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>, <replaceable>toport</replaceable>, <replaceable>toaddr</replaceable>) from list of forward ports of zone.
-		See <literal>forward-port</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removeForwardPort">org.fedoraproject.FirewallD1.zone.Methods.removeForwardPort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.zone.Methods.removeIcmpBlock">
             <term><methodname>removeIcmpBlock</methodname>(s: icmptype) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove <replaceable>icmptype</replaceable> from list of icmp types blocked in zone.
-		See <literal>icmp-block</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removeIcmpBlock">org.fedoraproject.FirewallD1.zone.Methods.removeIcmpBlock</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.zone.Methods.removeIcmpBlockInversion">
             <term><methodname>removeIcmpBlockInversion</methodname>() &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove <replaceable>icmp block inversion</replaceable> from the zone.
-		See <literal>icmp-block-inversion</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removeIcmpBlockInversion">org.fedoraproject.FirewallD1.zone.Methods.removeIcmpBlockInversion</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.zone.Methods.removeInterface">
             <term><methodname>removeInterface</methodname>(s: interface) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove <replaceable>interface</replaceable> from list of interfaces bound to zone.
-		See <literal>interface</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removeInterface">org.fedoraproject.FirewallD1.zone.Methods.removeInterface</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.zone.Methods.removeMasquerade">
             <term><methodname>removeMasquerade</methodname>() &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently disable masquerading in zone.
-		See <literal>masquerade</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removeMasquerade">org.fedoraproject.FirewallD1.zone.Methods.removeMasquerade</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.zone.Methods.removePort">
             <term><methodname>removePort</methodname>(s: port, s: protocol) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) from list of ports of zone.
-		See <literal>port</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removePort">org.fedoraproject.FirewallD1.zone.Methods.removePort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.zone.Methods.removeProtocol">
             <term><methodname>removeProtocol</methodname>(s: protocol) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove protocol from <replaceable>zone</replaceable>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removeProtocol">org.fedoraproject.FirewallD1.zone.Methods.removeProtocol</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_PROTOCOL, NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.zone.Methods.removeRichRule">
             <term><methodname>removeRichRule</methodname>(s: rule) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove <replaceable>rule</replaceable> from list of rich-language rules in zone.
-		See <literal>rule</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removeRichRule">org.fedoraproject.FirewallD1.zone.Methods.removeRichRule</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.zone.Methods.removeService">
             <term><methodname>removeService</methodname>(s: service) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove <replaceable>service</replaceable> from list of services used in zone.
-		See <literal>service</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removeService">org.fedoraproject.FirewallD1.zone.Methods.removeService</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.zone.Methods.removeSource">
             <term><methodname>removeSource</methodname>(s: source) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove <replaceable>source</replaceable> from list of source addresses bound to zone.
-		See <literal>source</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removeSource">org.fedoraproject.FirewallD1.zone.Methods.removeSource</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.zone.Methods.removeSourcePort">
             <term><methodname>removeSourcePort</methodname>(s: port, s: protocol) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) from list of source ports of zone.
-		See <literal>source-port</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
-		For runtime operation see <link linkend="FirewallD1.zone.Methods.removeSourcePort">org.fedoraproject.FirewallD1.zone.Methods.removeSourcePort</link>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.zone.Methods.rename">
@@ -4411,8 +3992,7 @@
             <term><methodname>setDescription</methodname>(s: description) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set description of zone to <replaceable>description</replaceable>.
-		See <literal>description</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4420,8 +4000,7 @@
             <term><methodname>setForwardPorts</methodname>(a(ssss): ports) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set forward ports of zone to list of (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>, <replaceable>toport</replaceable>, <replaceable>toaddr</replaceable>).
-		See <literal>forward-port</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4429,8 +4008,7 @@
             <term><methodname>setIcmpBlockInversion</methodname>(b: flag) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set icmp block inversion flag of zone to <replaceable>flag</replaceable>.
-		See <literal>icmp-block-inversion</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4438,8 +4016,7 @@
             <term><methodname>setIcmpBlocks</methodname>(as: icmptypes) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set list of icmp types blocked in zone to <replaceable>icmptypes</replaceable>.
-		See <literal>icmp-block</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4447,8 +4024,7 @@
             <term><methodname>setInterfaces</methodname>(as: interfaces) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set list of interfaces bound to zone to <replaceable>interfaces</replaceable>.
-		See <literal>interface</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4456,8 +4032,7 @@
             <term><methodname>setMasquerade</methodname>(b: masquerade) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set masquerading in zone to <replaceable>masquerade</replaceable>.
-		See <literal>masquerade</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4465,8 +4040,7 @@
             <term><methodname>setPorts</methodname>(a(ss): ports) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set ports of zone to list of (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>).
-		See <literal>port</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4474,8 +4048,7 @@
             <term><methodname>setProtocols</methodname>(as: protocols) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set list of protocols used in zone to <replaceable>protocols</replaceable>.
-		See <literal>protocol</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4483,8 +4056,7 @@
             <term><methodname>setRichRules</methodname>(as: rules) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set list of rich-language rules to <replaceable>rules</replaceable>.
-		See <literal>rule</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4492,8 +4064,7 @@
             <term><methodname>setServices</methodname>(as: services) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set list of services used in zone to <replaceable>services</replaceable>.
-		See <literal>service</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4501,8 +4072,7 @@
             <term><methodname>setShort</methodname>(s: short) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set name of zone to <replaceable>short</replaceable>.
-		See <literal>short</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4510,8 +4080,7 @@
             <term><methodname>setSourcePorts</methodname>(a(ss): ports) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set source-ports of zone to list of (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>).
-		See <literal>source-port</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4519,8 +4088,7 @@
             <term><methodname>setSources</methodname>(as: sources) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set list of source addresses bound to zone to <replaceable>sources</replaceable>.
-		See <literal>source</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4528,8 +4096,7 @@
             <term><methodname>setTarget</methodname>(s: target) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set target of zone to <replaceable>target</replaceable>.
-		See <literal>target</literal> attribute of <literal>zone</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4537,13 +4104,11 @@
             <term><methodname>setVersion</methodname>(s: version) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set version of zone to <replaceable>version</replaceable>.
-		See <literal>version</literal> attribute of <literal>zone</literal> tag in <citerefentry><refentrytitle>firewalld.zone</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.zone.Methods.update2">org.fedoraproject.FirewallD1.config.zone.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.zone.Methods.update">
-            <annotation name="org.freedesktop.DBus.Deprecated" />
             <term><methodname>update</methodname>((sssbsasa(ss)asba(ssss)asasasasa(ss)b): settings) &rarr; Nothing</term>
             <listitem>
               <para>
