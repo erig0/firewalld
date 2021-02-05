@@ -995,6 +995,7 @@ class FirewallD(slip.dbus.service.Object):
         return self.fw.service.get_services()
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE, in_signature='s',
                          out_signature='(sssa(ss)asa{ss}asa(ss))')
     @dbus_handle_exceptions

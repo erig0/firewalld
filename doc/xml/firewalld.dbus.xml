@@ -238,7 +238,6 @@
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.Methods.getServiceSettings">
-            <annotation name="org.freedesktop.DBus.Deprecated" />
             <term><methodname>getServiceSettings</methodname>(s: <parameter>service</parameter>) &rarr; (sssa(ss)asa{ss}asa(ss))</term>
             <listitem>
               <para>
@@ -2110,7 +2109,6 @@
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.Methods.addService">
-            <annotation name="org.freedesktop.DBus.Deprecated" />
             <term><methodname>addService</methodname>(s: service, (sssa(ss)asa{ss}asa(ss)): settings) &rarr; o</term>
             <listitem>
               <para>
@@ -4381,11 +4379,10 @@
         <title>Methods</title>
         <variablelist>
           <varlistentry id="FirewallD1.config.service.Methods.addModule">
-            <annotation name="org.freedesktop.DBus.Deprecated" />
             <term><methodname>addModule</methodname>(s: module) &rarr; Nothing</term>
             <listitem>
               <para>
-                This method is deprecated. Please use "helpers" in the update2() method.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4393,45 +4390,31 @@
             <term><methodname>addPort</methodname>(s: port, s: protocol) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently add (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) to list of ports in service.
-		See <literal>port</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: ALREADY_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.service.Methods.addProtocol">
             <term><methodname>addProtocol</methodname>(s: protocol) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently add protocol into <replaceable>zone</replaceable>.
-		The protocol can be any protocol supported by the system. Please have a look at <filename>/etc/protocols</filename> for supported protocols.
-		See <literal>protocol</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: INVALID_PROTOCOL, ALREADY_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.service.Methods.addSourcePort">
             <term><methodname>addSourcePort</methodname>(s: port, s: protocol) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently add (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) to list of source ports in service.
-		See <literal>source-port</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: ALREADY_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.service.Methods.getDescription">
             <term><methodname>getDescription</methodname>() &rarr; s</term>
             <listitem>
               <para>
-		Get description of service.
-		See <literal>description</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4439,21 +4422,15 @@
             <term><methodname>getDestination</methodname>(s: family) &rarr; s</term>
             <listitem>
               <para>
-		Get destination for IP family being either 'ipv4' or 'ipv6'.
-		See <literal>destination</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
-	      <para>
-		Possible errors: ALREADY_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.service.Methods.getDestinations">
             <term><methodname>getDestinations</methodname>() &rarr; a{ss}</term>
             <listitem>
               <para>
-		Get list of destinations.
-		Return value is a dictionary of {IP family : IP address} where 'IP family' key can be either 'ipv4' or 'ipv6'.
-		See <literal>destination</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4462,7 +4439,7 @@
             <term><methodname>getModules</methodname>() &rarr; as</term>
             <listitem>
               <para>
-                This method is deprecated. Please use "helpers" in the getSettings2() method.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4470,8 +4447,7 @@
             <term><methodname>getPorts</methodname>() &rarr; a(ss)</term>
             <listitem>
               <para>
-		Get list of (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) defined in service.
-		See <literal>port</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4479,13 +4455,11 @@
             <term><methodname>getProtocols</methodname>() &rarr; as</term>
             <listitem>
               <para>
-		Return array of protocols (s) defined in <replaceable>service</replaceable>.
-		See <literal>protocol</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.service.Methods.getSettings">
-            <annotation name="org.freedesktop.DBus.Deprecated" />
             <term><methodname>getSettings</methodname>() &rarr; (sssa(ss)asa{ss}asa(ss))</term>
             <listitem>
               <para>
@@ -4521,8 +4495,7 @@
             <term><methodname>getShort</methodname>() &rarr; s</term>
             <listitem>
               <para>
-		Get name of service.
-		See <literal>short</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4530,8 +4503,7 @@
             <term><methodname>getSourcePorts</methodname>() &rarr; a(ss)</term>
             <listitem>
               <para>
-		Get list of (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) defined in service.
-		See <literal>source-port</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4539,8 +4511,7 @@
             <term><methodname>getVersion</methodname>() &rarr; s</term>
             <listitem>
               <para>
-		Get version of service.
-		See <literal>version</literal> attribute of <literal>service</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4559,9 +4530,7 @@
             <term><methodname>queryDestination</methodname>(s: family, s: address) &rarr; b</term>
             <listitem>
               <para>
-		Return whether a <replaceable>destination</replaceable> is in dictionary of destinations of this service.
-		destination is in format: (<replaceable>IP family</replaceable>, <replaceable>IP address</replaceable>) where <replaceable>IP family</replaceable> can be either 'ipv4' or 'ipv6'.
-		See <literal>destination</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4570,7 +4539,7 @@
             <term><methodname>queryModule</methodname>(s: module) &rarr; b</term>
             <listitem>
               <para>
-                This method is deprecated. Please use "helpers" in the getSettings2() method.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4578,8 +4547,7 @@
             <term><methodname>queryPort</methodname>(s: port, s: protocol) &rarr; b</term>
             <listitem>
               <para>
-		Return whether (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) is in list of ports in service.
-		See <literal>port</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4587,8 +4555,7 @@
             <term><methodname>queryProtocol</methodname>(s: protocol) &rarr; b</term>
             <listitem>
               <para>
-		Return whether <replaceable>protocol</replaceable> is in list of protocols in service.
-		See <literal>protocol</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4596,8 +4563,7 @@
             <term><methodname>querySourcePort</methodname>(s: port, s: protocol) &rarr; b</term>
             <listitem>
               <para>
-		Return whether (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) is in list of source ports in service.
-		See <literal>source-port</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.getSettings2">org.fedoraproject.FirewallD1.config.service.Methods.getSettings2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4616,12 +4582,8 @@
             <term><methodname>removeDestination</methodname>(s: family) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove a destination with <replaceable>family</replaceable> ('ipv4' or 'ipv6') from service.
-		See <literal>destination</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.service.Methods.removeModule">
@@ -4629,7 +4591,7 @@
             <term><methodname>removeModule</methodname>(s: module) &rarr; Nothing</term>
             <listitem>
               <para>
-                This method is deprecated. Please use "helpers" in the update2() method.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4637,36 +4599,24 @@
             <term><methodname>removePort</methodname>(s: port, s: protocol) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) from list of ports in service.
-		See <literal>port</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.service.Methods.removeProtocol">
             <term><methodname>removeProtocol</methodname>(s: protocol) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove <replaceable>protocol</replaceable> from list of protocols in service.
-		See <literal>protocol</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.service.Methods.removeSourcePort">
             <term><methodname>removeSourcePort</methodname>(s: port, s: protocol) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently remove (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>) from list of source ports in service.
-		See <literal>source-port</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: NOT_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.service.Methods.rename">
@@ -4684,8 +4634,7 @@
             <term><methodname>setDescription</methodname>(s: description) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set description of service to <replaceable>description</replaceable>.
-		See <literal>description</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4693,21 +4642,15 @@
             <term><methodname>setDestination</methodname>(s: family, s: address) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set a destination address.
-		destination is in format: (<replaceable>IP family</replaceable>, <replaceable>IP address</replaceable>) where <replaceable>IP family</replaceable> can be either 'ipv4' or 'ipv6'.
-		See <literal>destination</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
-	      <para>
-		Possible errors: ALREADY_ENABLED
-	      </para>
             </listitem>
           </varlistentry>
 	  <varlistentry id="FirewallD1.config.service.Methods.setDestinations">
             <term><methodname>setDestinations</methodname>(a{ss}: destinations) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set destinations of service to <replaceable>destinations</replaceable>, which is a dictionary of {IP family : IP address} where 'IP family' key can be either 'ipv4' or 'ipv6'.
-		See <literal>destination</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4717,7 +4660,7 @@
             <term><methodname>setModules</methodname>(as: modules) &rarr; Nothing</term>
             <listitem>
               <para>
-                This method is deprecated. Please use "helpers" in the update2() method.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4725,8 +4668,7 @@
             <term><methodname>setPorts</methodname>(a(ss): ports) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set ports of service to list of (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>).
-		See <literal>port</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4734,8 +4676,7 @@
             <term><methodname>setProtocols</methodname>(as: protocols) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set protocols of service to list of <replaceable>protocols</replaceable>.
-		See <literal>protocol</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4743,8 +4684,7 @@
             <term><methodname>setShort</methodname>(s: short) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set name of service to <replaceable>short</replaceable>.
-		See <literal>short</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4752,8 +4692,7 @@
             <term><methodname>setSourcePorts</methodname>(a(ss): ports) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set source-ports of service to list of (<replaceable>port</replaceable>, <replaceable>protocol</replaceable>).
-		See <literal>source-port</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
@@ -4761,13 +4700,11 @@
             <term><methodname>setVersion</methodname>(s: version) &rarr; Nothing</term>
             <listitem>
               <para>
-		Permanently set version of service to <replaceable>version</replaceable>.
-		See <literal>version</literal> attribute of <literal>service</literal> tag in <citerefentry><refentrytitle>firewalld.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+                This function is deprecated, use <link linkend="FirewallD1.config.service.Methods.update2">org.fedoraproject.FirewallD1.config.service.Methods.update2</link> instead.
               </para>
             </listitem>
           </varlistentry>
           <varlistentry id="FirewallD1.config.service.Methods.update">
-            <annotation name="org.freedesktop.DBus.Deprecated" />
             <term><methodname>update</methodname>((sssa(ss)asa{ss}asa(ss)): settings) &rarr; Nothing</term>
             <listitem>
               <para>

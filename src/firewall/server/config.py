@@ -1140,6 +1140,7 @@ class FirewallDConfig(slip.dbus.service.Object):
                 return obj
         raise FirewallError(errors.INVALID_SERVICE, service)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG,
                          in_signature='s(sssa(ss)asa{ss}asa(ss))',
                          out_signature='o')

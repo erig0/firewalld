@@ -31,10 +31,12 @@ import slip.dbus.service
 from firewall import config
 from firewall.dbus_utils import dbus_to_python, \
     dbus_introspection_prepare_properties, \
-    dbus_introspection_add_properties
+    dbus_introspection_add_properties, \
+    dbus_introspection_add_deprecated
 from firewall.core.logger import log
 from firewall.server.decorators import handle_exceptions, \
-    dbus_handle_exceptions, dbus_service_method
+    dbus_handle_exceptions, dbus_service_method, \
+    dbus_service_method_deprecated, dbus_service_signal_deprecated
 from firewall import errors
 from firewall.errors import FirewallError
 
@@ -166,11 +168,19 @@ class FirewallDConfigService(slip.dbus.service.Object):
         data = super(FirewallDConfigService, self).Introspect(
             self.path, self.busname.get_bus())
 
-        return dbus_introspection_add_properties(
-            self, data, config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
+        data = dbus_introspection_add_properties(
+                    self, data, config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
+
+        data = dbus_introspection_add_deprecated(
+                    self, data, config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
+                    dbus_service_method_deprecated().deprecated,
+                    dbus_service_signal_deprecated().deprecated)
+
+        return data
 
     # S E T T I N G S
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          out_signature='(sssa(ss)asa{ss}asa(ss))')
     @dbus_handle_exceptions
@@ -189,6 +199,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         log.debug1("%s.getSettings2()", self._log_prefix)
         return self.config.get_service_config_dict(self.obj)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='(sssa(ss)asa{ss}asa(ss))')
     @dbus_handle_exceptions
@@ -267,6 +278,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
 
     # version
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          out_signature='s')
     @dbus_handle_exceptions
@@ -274,6 +286,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         log.debug1("%s.getVersion()", self._log_prefix)
         return self.getSettings()[0]
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s')
     @dbus_handle_exceptions
@@ -287,6 +300,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
 
     # short
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          out_signature='s')
     @dbus_handle_exceptions
@@ -294,6 +308,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         log.debug1("%s.getShort()", self._log_prefix)
         return self.getSettings()[1]
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s')
     @dbus_handle_exceptions
@@ -307,6 +322,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
 
     # description
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          out_signature='s')
     @dbus_handle_exceptions
@@ -314,6 +330,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         log.debug1("%s.getDescription()", self._log_prefix)
         return self.getSettings()[2]
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s')
     @dbus_handle_exceptions
@@ -328,6 +345,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
 
     # port
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          out_signature='a(ss)')
     @dbus_handle_exceptions
@@ -335,6 +353,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         log.debug1("%s.getPorts()", self._log_prefix)
         return self.getSettings()[3]
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='a(ss)')
     @dbus_handle_exceptions
@@ -354,6 +373,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[3] = ports
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='ss')
     @dbus_handle_exceptions
@@ -370,6 +390,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[3].append((port,protocol))
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='ss')
     @dbus_handle_exceptions
@@ -385,6 +406,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[3].remove((port,protocol))
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='ss', out_signature='b')
     @dbus_handle_exceptions
@@ -397,6 +419,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
 
     # protocol
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          out_signature='as')
     @dbus_handle_exceptions
@@ -404,6 +427,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         log.debug1("%s.getProtocols()", self._log_prefix)
         return self.getSettings()[6]
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='as')
     @dbus_handle_exceptions
@@ -416,6 +440,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[6] = protocols
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s')
     @dbus_handle_exceptions
@@ -429,6 +454,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[6].append(protocol)
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s')
     @dbus_handle_exceptions
@@ -442,6 +468,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[6].remove(protocol)
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s', out_signature='b')
     @dbus_handle_exceptions
@@ -452,6 +479,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
 
     # source port
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          out_signature='a(ss)')
     @dbus_handle_exceptions
@@ -459,6 +487,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         log.debug1("%s.getSourcePorts()", self._log_prefix)
         return self.getSettings()[7]
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='a(ss)')
     @dbus_handle_exceptions
@@ -478,6 +507,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[7] = ports
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='ss')
     @dbus_handle_exceptions
@@ -494,6 +524,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[7].append((port,protocol))
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='ss')
     @dbus_handle_exceptions
@@ -509,6 +540,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[7].remove((port,protocol))
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='ss', out_signature='b')
     @dbus_handle_exceptions
@@ -521,6 +553,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
 
     # module
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          out_signature='as')
     @dbus_handle_exceptions
@@ -528,6 +561,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         log.debug1("%s.getModules()", self._log_prefix)
         return self.getSettings()[4]
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='as')
     @dbus_handle_exceptions
@@ -548,6 +582,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[4] = modules
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s')
     @dbus_handle_exceptions
@@ -565,6 +600,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[4].append(module)
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s')
     @dbus_handle_exceptions
@@ -582,6 +618,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[4].remove(module)
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s', out_signature='b')
     @dbus_handle_exceptions
@@ -596,6 +633,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
 
     # destination
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          out_signature='a{ss}')
     @dbus_handle_exceptions
@@ -603,6 +641,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         log.debug1("%s.getDestinations()", self._log_prefix)
         return self.getSettings()[5]
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='a{ss}')
     @dbus_handle_exceptions
@@ -616,6 +655,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[5] = destinations
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s', out_signature='s')
     @dbus_handle_exceptions
@@ -629,6 +669,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
             raise FirewallError(errors.NOT_ENABLED, family)
         return settings[5][family]
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='ss')
     @dbus_handle_exceptions
@@ -645,6 +686,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings[5][family] = address
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s')
     @dbus_handle_exceptions
@@ -659,6 +701,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         del settings[5][family]
         self.update(settings)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='ss', out_signature='b')
     @dbus_handle_exceptions
@@ -673,6 +716,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
 
     # includes
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          out_signature='as')
     @dbus_handle_exceptions
@@ -682,6 +726,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         settings = self.config.get_service_config_dict(self.obj)
         return settings["includes"] if "includes" in settings else []
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='as')
     @dbus_handle_exceptions
@@ -693,6 +738,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         self.config.set_service_config_dict(self.obj, settings)
         self.Updated(self.obj.name)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s')
     @dbus_handle_exceptions
@@ -705,6 +751,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         self.config.set_service_config_dict(self.obj, settings)
         self.Updated(self.obj.name)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s')
     @dbus_handle_exceptions
@@ -717,6 +764,7 @@ class FirewallDConfigService(slip.dbus.service.Object):
         self.config.set_service_config_dict(self.obj, settings)
         self.Updated(self.obj.name)
 
+    @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_SERVICE,
                          in_signature='s', out_signature='b')
     @dbus_handle_exceptions
