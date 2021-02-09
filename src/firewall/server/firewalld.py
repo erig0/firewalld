@@ -965,18 +965,27 @@ class FirewallD(slip.dbus.service.Object):
     @dbus_handle_exceptions
     def getPolicySettings(self, policy, sender=None):
         policy = dbus_to_python(policy, str)
-        log.debug1("policy.getPolicySettings(%s)", policy)
-        return self.fw.policy.get_config_with_settings_dict(policy)
+        if policy in self.fw.zone.get_zones():
+            log.debug1("policy.getPolicySettings(%s) [zone]", policy)
+            return self.fw.zone.get_config_with_settings_dict(policy)
+        else:
+            log.debug1("policy.getPolicySettings(%s)", policy)
+            return self.fw.policy.get_config_with_settings_dict(policy)
 
     @slip.dbus.polkit.require_auth(config.dbus.PK_ACTION_CONFIG_INFO)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_POLICY, in_signature='sa{sv}')
     @dbus_handle_exceptions
     def setPolicySettings(self, policy, settings, sender=None):
         policy = dbus_to_python(policy, str)
-        log.debug1("policy.setPolicySettings(%s)", policy)
         self.accessCheck(sender)
-        self.fw.policy.set_config_with_settings_dict(policy, settings, sender)
-        self.PolicyUpdated(policy, settings)
+        if policy in self.fw.zone.get_zones():
+            log.debug1("policy.setPolicySettings(%s) [zone]", policy)
+            self.fw.zone.set_config_with_settings_dict(policy, settings, sender)
+            self.ZoneUpdated(policy, settings)
+        else:
+            log.debug1("policy.setPolicySettings(%s)", policy)
+            self.fw.policy.set_config_with_settings_dict(policy, settings, sender)
+            self.PolicyUpdated(policy, settings)
 
     @dbus.service.signal(config.dbus.DBUS_INTERFACE_POLICY, signature='sa{sv}')
     @dbus_handle_exceptions
