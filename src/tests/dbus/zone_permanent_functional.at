@@ -482,4 +482,28 @@ DBUS_CHECK([config/zone/${DBUS_FOOBAR2_ZONE_OBJ}], [config.zone.getSettings2], [
        'version': <'1.4'>
 ])
 
+dnl verify dict based policy API can manipulate zones
+dnl
+DBUS_CHECK([config/zone/${DBUS_FOOBAR2_ZONE_OBJ}], [config.policy.getSettings], [], 0, [dnl
+       'description': <'foobar zone update2'>
+       'forward': <false>
+       'icmp_block_inversion': <false>
+       'interfaces': <@<:@'dummy3'@:>@>
+       'masquerade': <false>
+       'ports': <@<:@('1234', 'udp')@:>@>
+       'protocols': <@<:@'ipv6-icmp'@:>@>
+       'rules_str': <@<:@'rule family="ipv4" source address="10.20.20.20" accept'@:>@>
+       'services': <@<:@'mdns'@:>@>
+       'short': <'foobar update2'>
+       'source_ports': <@<:@('1234', 'udp')@:>@>
+       'sources': <@<:@'10.10.10.0/24', '10.30.30.0/24'@:>@>
+       'target': <'ACCEPT'>
+       'version': <'1.4'>
+])
+dnl DBUS_CHECK([config/zone/${DBUS_FOOBAR2_ZONE_OBJ}], [config.policy.update], [dnl
+dnl     '{"version": <"1.2">, dnl
+dnl       "target": <"ACCEPT"> dnl
+dnl      }'dnl
+dnl ], 0, [ignore])
+
 FWD_END_TEST([-e '/ERROR: INVALID_ZONE: foobar-renamed/d'])

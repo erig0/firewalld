@@ -186,21 +186,26 @@ class FirewallDConfigZone(slip.dbus.service.Object):
 
     # S E T T I N G S
 
+    @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_POLICY,
+                         out_signature="a{sv}", isPolicyInterface=True)
     @dbus_service_method_deprecated(config.dbus.DBUS_INTERFACE_CONFIG_ZONE)
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_ZONE,
                          out_signature="(sssbsasa(ss)asba(ssss)asasasasa(ss)b)")
     @dbus_handle_exceptions
-    def getSettings(self, sender=None): # pylint: disable=W0613
+    def getSettings(self, sender=None, isPolicyInterface=False): # pylint: disable=W0613
         """get settings for zone
         """
-        log.debug1("%s.getSettings()", self._log_prefix)
-        settings = self.config.get_zone_config(self.obj)
-        if settings[4] == DEFAULT_ZONE_TARGET:
-            # convert to list, fix target, convert back to tuple
-            _settings = list(settings)
-            _settings[4] = "default"
-            settings = tuple(_settings)
-        return settings
+        if isPolicyInterface:
+            return self.getSettings2(sender=sender)
+        else:
+            log.debug1("%s.getSettings()", self._log_prefix)
+            settings = self.config.get_zone_config(self.obj)
+            if settings[4] == DEFAULT_ZONE_TARGET:
+                # convert to list, fix target, convert back to tuple
+                _settings = list(settings)
+                _settings[4] = "default"
+                settings = tuple(_settings)
+            return settings
 
     @dbus_service_method(config.dbus.DBUS_INTERFACE_CONFIG_ZONE,
                          out_signature="a{sv}")
