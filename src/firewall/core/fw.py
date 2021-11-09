@@ -130,6 +130,26 @@ class Firewall(object):
         self._rfc3964_ipv4 = config.FALLBACK_RFC3964_IPV4
         self._allow_zone_drifting = config.FALLBACK_ALLOW_ZONE_DRIFTING
 
+    def get_all_io_objects_dict(self):
+        """
+        Returns a dict of dicts of all runtime config objects.
+        """
+        conf_dict = {}
+        conf_dict["ipsets"] = {_ipset: self.ipset.get_ipset(_ipset) for _ipset in self.ipset.get_ipsets()}
+        conf_dict["helpers"] = {helper: self.helper.get_helper(helper) for helper in self.helper.get_helpers()}
+        conf_dict["icmptypes"] = {icmptype: self.icmptype.get_icmptype(icmptype) for icmptype in self.icmptype.get_icmptypes()}
+        conf_dict["services"] = {service: self.service.get_service(service) for service in self.service.get_services()}
+        conf_dict["zones"] = {zone: self.zone.get_zone(zone) for zone in self.zone.get_zones()}
+        conf_dict["policies"] = {policy: self.policy.get_policy(policy) for policy in self.policy.get_policies_not_derived_from_zone()}
+
+        return conf_dict
+
+    def full_check_config(self):
+        all_io_objects = self.get_all_io_objects_dict()
+        for (io_obj_type, io_objs) in all_io_objects.items():
+            for (name, io_obj) in io_objs.items():
+                io_obj.check_config_dict(io_obj.export_config_dict(), all_io_objects)
+
     def _check_tables(self):
         # check if iptables, ip6tables and ebtables are usable, else disable
         if self.ip4tables_enabled and \
