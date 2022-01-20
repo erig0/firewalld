@@ -135,6 +135,12 @@ class FirewallConfig(object):
 
         return conf_dict
 
+    def full_check_config(self):
+        all_io_objects = self.get_all_io_objects_dict()
+        for (io_obj_type, io_objs) in all_io_objects.items():
+            for (name, io_obj) in io_objs.items():
+                io_obj.check_config_dict(io_obj.export_config_dict(), all_io_objects)
+
     # access check
 
     def lockdown_enabled(self):
