@@ -403,7 +403,7 @@ class FirewallZone(object):
         return interface
 
     def add_interface(self, zone, interface, sender=None,
-                      use_transaction=None, allow_apply=True):
+                      allow_apply=True):
         self._fw.check_panic()
         _zone = self._fw.check_zone(zone)
         _obj = self._zones[_zone]
@@ -423,10 +423,7 @@ class FirewallZone(object):
         log.debug1("Setting zone of interface '%s' to '%s'" % (interface,
                                                                _zone))
 
-        if use_transaction is None:
-            transaction = self.new_transaction()
-        else:
-            transaction = use_transaction
+        transaction = self.new_transaction()
 
         if not _obj.applied and allow_apply:
             self.apply_zone_settings(zone,
@@ -440,8 +437,7 @@ class FirewallZone(object):
         transaction.add_fail(self.__unregister_interface, _obj,
                                   interface_id)
 
-        if use_transaction is None:
-            transaction.execute(True)
+        transaction.execute(True)
 
         return _zone
 
@@ -483,8 +479,7 @@ class FirewallZone(object):
         if use_transaction is None:
             transaction.execute(True)
 
-    def remove_interface(self, zone, interface,
-                         use_transaction=None):
+    def remove_interface(self, zone, interface):
         self._fw.check_panic()
         zoi = self.get_zone_of_interface(interface)
         if zoi is None:
@@ -496,18 +491,14 @@ class FirewallZone(object):
                                 "remove_interface(%s, %s): zoi='%s'" % \
                                 (zone, interface, zoi))
 
-        if use_transaction is None:
-            transaction = self.new_transaction()
-        else:
-            transaction = use_transaction
+        transaction = self.new_transaction()
 
         _obj = self._zones[_zone]
         interface_id = self.__interface_id(interface)
         transaction.add_post(self.__unregister_interface, _obj, interface_id)
         self._interface(False, _zone, interface, transaction)
 
-        if use_transaction is None:
-            transaction.execute(True)
+        transaction.execute(True)
 
         return _zone
 
@@ -546,7 +537,7 @@ class FirewallZone(object):
         self.check_source(source, applied=applied)
         return source
 
-    def add_source(self, zone, source, sender=None, use_transaction=None,
+    def add_source(self, zone, source, sender=None,
                    allow_apply=True):
         self._fw.check_panic()
         _zone = self._fw.check_zone(zone)
@@ -565,10 +556,7 @@ class FirewallZone(object):
             raise FirewallError(errors.ZONE_CONFLICT,
                                 "'%s' already bound to a zone" % source)
 
-        if use_transaction is None:
-            transaction = self.new_transaction()
-        else:
-            transaction = use_transaction
+        transaction = self.new_transaction()
 
         if not _obj.applied and allow_apply:
             self.apply_zone_settings(zone,
@@ -581,8 +569,7 @@ class FirewallZone(object):
         self.__register_source(_obj, source_id, zone, sender)
         transaction.add_fail(self.__unregister_source, _obj, source_id)
 
-        if use_transaction is None:
-            transaction.execute(True)
+        transaction.execute(True)
 
         return _zone
 
@@ -607,8 +594,7 @@ class FirewallZone(object):
 
         return _zone
 
-    def remove_source(self, zone, source,
-                      use_transaction=None):
+    def remove_source(self, zone, source):
         self._fw.check_panic()
         if check_mac(source):
             source = source.upper()
@@ -622,10 +608,7 @@ class FirewallZone(object):
                                 "remove_source(%s, %s): zos='%s'" % \
                                 (zone, source, zos))
 
-        if use_transaction is None:
-            transaction = self.new_transaction()
-        else:
-            transaction = use_transaction
+        transaction = self.new_transaction()
 
         _obj = self._zones[_zone]
         ipv = self.check_source(source)
@@ -633,8 +616,7 @@ class FirewallZone(object):
         transaction.add_post(self.__unregister_source, _obj, source_id)
         self._source(False, _zone, ipv, source_id, transaction)
 
-        if use_transaction is None:
-            transaction.execute(True)
+        transaction.execute(True)
 
         return _zone
 
@@ -997,8 +979,7 @@ class FirewallZone(object):
                 rules = backend.build_zone_forward_rules(enable, zone, p_name, "filter", source=source)
                 transaction.add_rules(backend, rules)
 
-    def add_forward(self, zone, timeout=0, sender=None,
-                    use_transaction=None):
+    def add_forward(self, zone, timeout=0, sender=None):
         _zone = self._fw.check_zone(zone)
         self._fw.check_timeout(timeout)
         self._fw.check_panic()
@@ -1008,10 +989,7 @@ class FirewallZone(object):
             raise FirewallError(errors.ALREADY_ENABLED,
                                 "forward already enabled in '%s'" % _zone)
 
-        if use_transaction is None:
-            transaction = self.new_transaction()
-        else:
-            transaction = use_transaction
+        transaction = self.new_transaction()
 
         if _obj.applied:
             self._forward(True, _zone, transaction)
@@ -1019,15 +997,14 @@ class FirewallZone(object):
         self.__register_forward(_obj, timeout, sender)
         transaction.add_fail(self.__unregister_forward, _obj)
 
-        if use_transaction is None:
-            transaction.execute(True)
+        transaction.execute(True)
 
         return _zone
 
     def __register_forward(self, _obj, timeout, sender):
         _obj.forward = True
 
-    def remove_forward(self, zone, use_transaction=None):
+    def remove_forward(self, zone):
         _zone = self._fw.check_zone(zone)
         self._fw.check_panic()
         _obj = self._zones[_zone]
@@ -1036,18 +1013,14 @@ class FirewallZone(object):
             raise FirewallError(errors.NOT_ENABLED,
                                 "forward not enabled in '%s'" % _zone)
 
-        if use_transaction is None:
-            transaction = self.new_transaction()
-        else:
-            transaction = use_transaction
+        transaction = self.new_transaction()
 
         if _obj.applied:
             self._forward(False, _zone, transaction)
 
         transaction.add_post(self.__unregister_forward, _obj)
 
-        if use_transaction is None:
-            transaction.execute(True)
+        transaction.execute(True)
 
         return _zone
 
