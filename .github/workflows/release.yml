@@ -1,0 +1,75 @@
+name: release
+
+on: 
+  push:
+    tags:
+    - 'v*'
+
+jobs:
+
+  build:
+    env:
+      apt-dependencies: |
+        autoconf automake docbook-xml docbook-xsl ebtables intltool ipset \
+        iptables libdbus-1-dev libgirepository1.0-dev libglib2.0-dev \
+        libxml2-utils nftables pkg-config python3-nftables xsltproc
+      pip-dependencies: |
+        dbus-python PyGObject
+
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+
+    strategy:
+      matrix:
+        python-version: [3.7]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: apt update
+        run: sudo apt update
+
+      - name: apt install dependencies
+        run: sudo apt install -y ${{ env.apt-dependencies }}
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: pip install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ${{ env.pip-dependencies }}
+
+      - name: dist firewalld
+        run: |
+          ./autogen.sh
+          ./configure
+          make dist
+      
+      - name: make release notes
+        run: |
+          set -- $(grep "^Version:" firewalld.spec |cut -f2 -d ' ' |tr '.' ' ')
+          test ${{ github.ref_name }} = v${1}.${2}.${3} || { echo "tag doesn't match spec file"; exit 1; }
+          if test 0 -eq ${2} && test 0 -eq ${3}; then
+            echo "This is a major release. It includes breaking changes." > body.md
+            echo "" >> body.md
+            git shortlog --format="%s (%h)" --no-merges --grep "^feat" --grep "BREAKING" v$(expr ${1} - 1).0.0..v${1}.0.0 >> body.md
+          elif test 0 -eq ${3}; then
+            echo "This is a feature release. It also includes all bug fixes since v${1}.$(expr ${2} - 1).0." > body.md
+            echo "" >> body.md
+            git shortlog --format="%s (%h)" --no-merges --grep "^feat" v${1}.$(expr ${2} - 1).0..v${1}.${2}.0 >> body.md
+          else
+            echo "This is a bug fix only release." > body.md
+            echo "" >> body.md
+            git shortlog --format="%s (%h)" --grep "^\(fix\|doc\)" v${1}.${2}.$(expr ${3} - 1)..v${1}.${2}.${3} >> body.md
+          fi | sed -e 's/^[ ]\+/- /'
+
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "firewalld-*.tar.gz"
+          bodyFile: "body.md"
+          token: ${{ secrets.GITHUB_TOKEN }}
