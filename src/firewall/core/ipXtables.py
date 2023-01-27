@@ -21,6 +21,7 @@
 
 import os.path
 import copy
+import random
 
 from firewall.core.prog import runProg
 from firewall.core.logger import log
@@ -144,6 +145,8 @@ class ip4tables(object):
         self.policy_dispatch_index_cache = {}
         self.policy_dispatch_index_cache_ref_count = {}
         self.our_chains = {} # chains created by firewalld
+        self.unique_chain_name_map = {} # maps long chain names to one with shorter unique ID
+        random.seed("string to seed the generator and make test output predictable")
 
     def fill_exists(self):
         self.command_exists = os.path.exists(self._command)
@@ -564,10 +567,31 @@ class ip4tables(object):
 
         return wait_option
 
+    def get_unique_chain_name(self, chain, prefix="", suffix=""):
+        iptables_max_len = 28
+        if len(chain) <= iptables_max_len:
+            return chain
+        if chain in self.unique_chain_name_map:
+            return self.unique_chain_name_map[chain]
+
+        prefix = (prefix + "_") if prefix else ""
+        suffix = ("_" + suffix) if suffix else ""
+
+        while True:
+            rand_chain = prefix + \
+                         "".join(random.choice(string.ascii_letters + string.digits)
+                                 for i in range(iptables_max_len - len(prefix) - len(suffix))) + \
+                         suffix
+            if rand_chain not in self.unique_chain_name_map.values():
+                self.unique_chain_name_map[chain] = rand_chain
+                return rand_chain
+
     def build_flush_rules(self):
         self.rich_rule_priority_counts = {}
         self.policy_dispatch_index_cache = {}
         self.policy_dispatch_index_cache_ref_count = {}
+        self.our_chains = {}
+        self.unique_chain_name_map = {}
         rules = []
         for table in BUILT_IN_CHAINS.keys():
             if not self.get_available_tables(table):
