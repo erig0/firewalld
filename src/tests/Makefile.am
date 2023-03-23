@@ -1,7 +1,8 @@
-TESTSUITE = $(srcdir)/testsuite
-TESTSUITE_INTEGRATION = $(srcdir)/integration/testsuite
+TESTSUITE = testsuite
+TESTSUITE_INTEGRATION = integration/testsuite
 
 TESTSUITE_FILES = \
+	$(wildcard $(srcdir)/python/*.py) \
 	$(wildcard $(srcdir)/*.at) \
 	$(wildcard $(srcdir)/cli/*.at) \
 	$(wildcard $(srcdir)/dbus/*.at) \
@@ -14,11 +15,10 @@ EXTRA_DIST = \
 	$(TESTSUITE) \
 	$(TESTSUITE_INTEGRATION) \
 	$(TESTSUITE_FILES) \
-	$(wildcard $(srcdir)/python/*.py) \
-	$(srcdir)/package.m4 \
+	package.m4 \
 	atlocal.in
 
-DISTCLEANFILES = atconfig
+DISTCLEANFILES = atconfig atlocal
 
 testsuitedir = $(pkgdatadir)/testsuite
 dist_testsuite_SCRIPTS = $(TESTSUITE)
@@ -27,10 +27,7 @@ dist_testsuite_DATA = README.md
 testsuite_integrationdir = $(pkgdatadir)/testsuite/integration
 dist_testsuite_integration_SCRIPTS = $(TESTSUITE_INTEGRATION)
 
-testsuite_pythondir = $(pkgdatadir)/testsuite/python
-dist_testsuite_python_DATA = python/*.py
-
-$(srcdir)/package.m4: $(top_srcdir)/configure.ac $(top_srcdir)/firewalld.spec $(srcdir)/Makefile
+package.m4: $(top_srcdir)/configure.ac $(top_srcdir)/firewalld.spec Makefile
 	:;{ \
 	echo 'm4_define([AT_PACKAGE_NAME],[$(PACKAGE_NAME)])' && \
 	echo 'm4_define([AT_PACKAGE_VERSION],[$(PACKAGE_VERSION)])' && \
@@ -42,7 +39,7 @@ $(srcdir)/package.m4: $(top_srcdir)/configure.ac $(top_srcdir)/firewalld.spec $(
 check-local: atconfig atlocal $(TESTSUITE)
 	$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS) \
 		AUTOTEST_PATH="src" \
-		PYTHONPATH="${abs_top_srcdir}/src:${PYTHONPATH}" \
+		PYTHONPATH="${abs_top_builddir}/src:${abs_top_srcdir}/src:${PYTHONPATH}" \
 		FIREWALLD_DEFAULT_CONFIG="${abs_top_srcdir}/config"
 
 installcheck-local: atconfig atlocal $(TESTSUITE)
@@ -50,11 +47,12 @@ installcheck-local: atconfig atlocal $(TESTSUITE)
 
 clean-local:
 	test ! -f '$(TESTSUITE)' || $(SHELL) '$(TESTSUITE)' --clean
-	-rm $(srcdir)/package.m4
+	-rm package.m4
 
 AUTOM4TE = $(SHELL) $(top_srcdir)/missing --run autom4te
 AUTOTEST = $(AUTOM4TE) --language=autotest
-$(TESTSUITE) $(TESTSUITE_INTEGRATION): $(TESTSUITE_FILES) $(srcdir)/package.m4
+$(TESTSUITE) $(TESTSUITE_INTEGRATION): $(TESTSUITE_FILES) package.m4
+	mkdir -p $$(dirname $@)
 	$(AUTOTEST) -I '$(srcdir)' -o $@.tmp $@.at
 	mv $@.tmp $@
 
