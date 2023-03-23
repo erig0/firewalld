@@ -15,7 +15,6 @@ dist_gtkextra_DATA = gtk3_chooserbutton.py gtk3_niceexpander.py
 nobase_dist_python_DATA = \
 	firewall/client.py \
 	firewall/command.py \
-	firewall/config/dbus.py \
 	firewall/config/__init__.py \
 	firewall/core/base.py \
 	firewall/core/ebtables.py \

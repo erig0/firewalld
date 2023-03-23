@@ -303,7 +303,6 @@ src/firewall/client.py
 src/firewall-cmd.in
 src/firewall/command.py
 src/firewall-config.in
-src/firewall/config/dbus.py
 src/firewall-config.glade
 src/firewall/core/base.py
 src/firewall/core/ebtables.py
