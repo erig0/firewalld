@@ -1,0 +1,33 @@
+FWD_START_TEST([ipset non-compacted ipv6 in xml])
+AT_KEYWORDS(gh1318 ipset)
+
+AT_CHECK([mkdir -p ./ipsets])
+
+AT_DATA([./ipsets/foobar6.xml], [dnl
+<?xml version="1.0" encoding="utf-8"?>
+<ipset type="hash:net">
+  <option name="family" value="inet6"/>
+  <entry>fdc8:1324:5678:0::/64</entry>
+</ipset>
+])
+
+AT_DATA([./ipsets/foobar.xml], [dnl
+<?xml version="1.0" encoding="utf-8"?>
+<ipset type="hash:net">
+  <option name="family" value="inet"/>
+  <entry>10.10.10.0/24</entry>
+</ipset>
+])
+
+FWD_RELOAD()
+FWD_CHECK([--get-ipsets], 0, [dnl
+foobar foobar6
+])
+FWD_CHECK([--info-ipset foobar6], 0, [dnl
+foobar6
+  type: hash:net
+  options: family=inet6
+  entries: fdc8:1324:5678:0::/64
+])
+
+FWD_END_TEST()
