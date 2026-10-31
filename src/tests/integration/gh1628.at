@@ -1,0 +1,13 @@
+FWD_START_TEST([])
+
+dnl FIXME: create interface as per bug (in needinfo)
+
+FWD_CHECK([--zone=external --change-interface=eno1 --permanent], 0, [ignore])
+FWD_CHECK([--zone=external --change-interface=eno, 0, [ignore])
+FWD_CHECK([--get-active-zones, 0, [ignore])
+FWD_RELOAD()
+FWD_CHECK([--get-active-zones, 0, [
+FIXME
+])
+
+FWD_END_TEST()
